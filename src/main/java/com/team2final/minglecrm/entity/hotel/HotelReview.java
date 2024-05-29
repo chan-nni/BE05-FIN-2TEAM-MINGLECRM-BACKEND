@@ -14,11 +14,6 @@ import static jakarta.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@NamedEntityGraph(name = "HotelReview.withRoomReservationAndCustomer",
-        attributeNodes = {
-                @NamedAttributeNode("roomReservation"),
-                @NamedAttributeNode("customer")
-        })
 public class HotelReview {
 
     @Id

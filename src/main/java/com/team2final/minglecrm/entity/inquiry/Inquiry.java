@@ -36,6 +36,10 @@ public class Inquiry {
 
     private Boolean isReply;
 
+    private Boolean isActionNeeded;
+
+    private String actionContent;
+
     @Builder
     public Inquiry(Customer customer, LocalDateTime date, String inquiryTitle, String inquiryContent, String type, Boolean isReply, Boolean isActionNeeded, String actionContent) {
         this.customer = customer;
@@ -44,6 +48,8 @@ public class Inquiry {
         this.inquiryContent = inquiryContent;
         this.isReply = isReply;
         this.type = type;
+        this.isActionNeeded = isActionNeeded;
+        this.actionContent = actionContent;
     }
 
 }
