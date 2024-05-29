@@ -26,7 +26,7 @@ public class CustomerPreference {
     private LocalDateTime preferredCheckinTime;
     private LocalDateTime preferredCheckoutTime;
     private String dietaryRestrictions;
-    private String funnel;
+    private String referer;
     private String interest;
     private Boolean isBreakfastPreferred;
 
