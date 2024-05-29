@@ -16,7 +16,7 @@ public class Reward {
     @Column(name="id", updatable=false)
     private Long id;
 
-    @OneToOne(fetch = LAZY)
+    @OneToOne (fetch = LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

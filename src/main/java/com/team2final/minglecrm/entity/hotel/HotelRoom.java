@@ -1,9 +1,6 @@
 package com.team2final.minglecrm.entity.hotel;
 
-import com.team2final.minglecrm.entity.hotel.type.RoomType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,13 +18,8 @@ public class HotelRoom {
     private Long id;
 
     private String hotel;
-
     private String address;
-
     private Integer roomNumber;
-
-    @Enumerated(value = EnumType.STRING)
-    private RoomType roomType;
-
+    private String roomType;
     private String roomState;
 }

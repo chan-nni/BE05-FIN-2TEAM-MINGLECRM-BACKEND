@@ -39,15 +39,15 @@ public class VoucherHistory {
 
     private LocalDateTime conversionDate;
 
-    @ManyToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "manager_id")
     private Employee employeeManager;
 
-    @ManyToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "staff_id")
     private Employee employeeStaff;
 
-    @ManyToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

@@ -1,17 +1,13 @@
 package com.team2final.minglecrm.service.inquiry;
 
-import com.team2final.minglecrm.controller.inquiry.request.InquiryActionRequest;
 import com.team2final.minglecrm.controller.inquiry.request.InquiryReplyRequest;
-import com.team2final.minglecrm.controller.inquiry.response.InquiryActionResponse;
 import com.team2final.minglecrm.controller.inquiry.response.InquiryDetailResponse;
 import com.team2final.minglecrm.controller.inquiry.response.InquiryReplyResponse;
 import com.team2final.minglecrm.controller.inquiry.response.InquiryResponse;
 import com.team2final.minglecrm.entity.employee.Employee;
 import com.team2final.minglecrm.entity.inquiry.Inquiry;
-import com.team2final.minglecrm.entity.inquiry.InquiryAction;
 import com.team2final.minglecrm.entity.inquiry.InquiryReply;
 import com.team2final.minglecrm.persistence.repository.employee.EmployeeRepository;
-import com.team2final.minglecrm.persistence.repository.inquiry.InquiryActionRepository;
 import com.team2final.minglecrm.persistence.repository.inquiry.InquiryReplyRepository;
 import com.team2final.minglecrm.persistence.repository.inquiry.InquiryRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +27,6 @@ public class InquiryService {
 
     private final InquiryRepository inquiryRepository;
     private final InquiryReplyRepository inquiryReplyRepository;
-    private final InquiryActionRepository inquiryActionRepository;
     private final EmployeeRepository employeeRepository;
 
     @Transactional
@@ -50,17 +45,14 @@ public class InquiryService {
                 .orElseThrow(() -> new RuntimeException("문의를 찾을 수 없습니다."));
 
         InquiryReply reply = inquiryReplyRepository.findByInquiryId(inquiryId).orElse(null);
-        InquiryAction action = inquiryActionRepository.findByInquiryId(inquiryId).orElse(null);
 
-        InquiryResponse inquiryResponse = convertToDTO(inquiry, reply);
+        InquiryResponse inquiryResponse = convertToDTO(inquiry);
         InquiryReplyResponse inquiryReplyResponse = (reply != null) ? convertToDTO(reply) : null;
-        InquiryActionResponse inquiryActionResponse = (action != null) ? convertToActionDTO(action) : null;
         // 문의에 답변 존재하는지 확인 -> 없으면 null
 
         return InquiryDetailResponse.builder()
                 .inquiryResponse(inquiryResponse)
                 .inquiryReplyResponse(inquiryReplyResponse)
-                .inquiryActionResponse(inquiryActionResponse)
                 .build();
     }
 
@@ -104,50 +96,10 @@ public class InquiryService {
         return convertToDTO(inquiryReply);
     }
 
-    @Transactional
-    public InquiryActionResponse actionToInquiry(InquiryActionRequest request){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-
-        Employee employee = employeeRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("로그인한 사용자를 찾을 수 없습니다."));
-
-        Inquiry inquiry = inquiryRepository.findById(request.getInquiryId())
-                .orElseThrow(() -> new RuntimeException("문의를 찾을 수 없습니다."));
-
-        InquiryAction inquiryAction = InquiryAction.builder()
-                .inquiry(inquiry)
-                .employee(employee)
-                .isActionNeeded(true)
-                .actionContent(request.getActionContent())
-                .date(LocalDateTime.now())
-                .build();
-
-        InquiryAction saveAction = inquiryActionRepository.save(inquiryAction);
-
-        return convertToActionDTO(saveAction);
-    }
-
-    @Transactional
-    public InquiryActionResponse updateInquiryAction(Long inquiryActionId, String updateAction) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-
-        Employee employee = employeeRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("로그인한 사용자를 찾을 수 없습니다."));
-
-        InquiryAction inquiryAction = inquiryActionRepository.findById(inquiryActionId)
-                .orElseThrow(() -> new RuntimeException("조치 내용을 찾을 수 없습니다."));
-
-        inquiryAction.updateAction(updateAction, LocalDateTime.now(), employee);
-
-        return convertToActionDTO(inquiryAction);
-    }
 
     private InquiryResponse convertToDTO(Inquiry inquiry, InquiryReply inquiryReply) {
-        String employName = (inquiryReply != null) ? inquiryReply.getEmployee().getName() : null; // 답변이 null이 아닐 경우만 실행
-        boolean isReply = (inquiryReply != null); // 답변이 있으면 true
-
+        String employName = (inquiryReply != null) ? inquiryReply.getEmployee().getName() : null;
+        // 답변이 null이 아닐 경우만 실행
 
         return InquiryResponse.builder()
                 .customerName(inquiry.getCustomer().getName())
@@ -157,7 +109,17 @@ public class InquiryService {
                 .employName(employName)
                 .inquiryTitle(inquiry.getInquiryTitle())
                 .inquiryContent(inquiry.getInquiryContent())
-                .isReply(isReply)
+                .build();
+    }
+
+    private InquiryResponse convertToDTO(Inquiry inquiry) {
+        return InquiryResponse.builder()
+                .customerName(inquiry.getCustomer().getName())
+                .customerPhone(inquiry.getCustomer().getPhone())
+                .date(inquiry.getDate())
+                .type(inquiry.getType())
+                .inquiryTitle(inquiry.getInquiryTitle())
+                .inquiryContent(inquiry.getInquiryContent())
                 .build();
     }
 
@@ -168,17 +130,6 @@ public class InquiryService {
                 .email(inquiryReply.getEmployee().getEmail())
                 .reply(inquiryReply.getReply())
                 .date(inquiryReply.getDate())
-                .build();
-    }
-
-    private InquiryActionResponse convertToActionDTO(InquiryAction inquiryAction) {
-        return InquiryActionResponse.builder()
-                .id(inquiryAction.getId())
-                .inquiryId(inquiryAction.getInquiry().getId())
-                .actionContent(inquiryAction.getActionContent())
-                .isActionNeeded(inquiryAction.getIsActionNeeded())
-                .email(inquiryAction.getEmployee().getEmail())
-                .date(inquiryAction.getDate())
                 .build();
     }
 }
