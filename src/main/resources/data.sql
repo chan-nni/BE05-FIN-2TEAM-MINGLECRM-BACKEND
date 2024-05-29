@@ -27,18 +27,6 @@ VALUES
     (3, '2024-05-15', '문의 제목 9', '문의 내용 9', '방문 문의', FALSE),
     (4, '2024-05-14', '문의 제목 10', '문의 내용 10', '온라인 문의', TRUE);
 
--- HOTEL_REVIEW 데이터 삽입
-INSERT INTO hotel_review (CLEANLINESS_RATING, CONVENIENCE_RATING, KINDNESS_RATING, LOCATION_RATING, CREATED_TIME, CUSTOMER_ID, ROOM_RESERVATION_ID, COMMENT) VALUES
-(1, 2, 3, 4, '2024-05-01 07:05:15', NULL, NULL, '호텔이 아주 좋아요'),
-(2, 1, 3, 4, '2024-05-02 07:05:15', NULL, NULL, '호텔이 아주 좋아요2'),
-(3, 2, 1, 4, '2024-05-03 07:05:15', NULL, NULL, '호텔이 아주 좋아요3'),
-(5, 2, 3, 4, '2024-05-04 07:05:15', NULL, NULL, '호텔이 아주 좋아요4'),
-(5, 5, 3, 4, '2024-05-05 07:05:15', NULL, NULL, '호텔이 아주 좋아요5'),
-(1, 2, 3, 4, '2024-05-06 07:05:15', NULL, NULL, '호텔이 아주 좋아요'),
-(2, 1, 3, 4, '2024-05-07 07:05:15', NULL, NULL, '호텔이 아주 좋아요2'),
-(3, 2, 1, 4, '2024-05-08 07:05:15', NULL, NULL, '호텔이 아주 좋아요3'),
-(5, 2, 3, 4, '2024-05-09 07:05:15', NULL, NULL, '호텔이 아주 좋아요4'),
-(5, 5, 3, 4, '2024-05-10 07:05:15', NULL, NULL, '호텔이 아주 좋아요5');
 
 -- PAYMENT 데이터 삽입
 INSERT INTO payment (type, amount_before_discount, discount_amount, payment_amount, payment_date, is_refunded, refund_date, created_reward, customer_id, payment_spot) VALUES
@@ -159,3 +147,17 @@ INSERT INTO reward_history (reward_id, payment_id, voucher_id, type, amount, rea
 (4, 4, 4, 'Redeem', 4000, 'Voucher', '2024-06-04 12:00:00'),
 (5, 5, 5, 'Earn', 5000, 'Payment', '2024-06-05 12:00:00'),
 (6, 6, 6, 'Redeem', 6000, 'Voucher', '2024-06-06 12:00:00');
+
+
+-- HOTEL_REVIEW 데이터 삽입
+INSERT INTO hotel_review (CLEANLINESS_RATING, CONVENIENCE_RATING, KINDNESS_RATING, LOCATION_RATING, CREATED_TIME, CUSTOMER_ID, ROOM_RESERVATION_ID, COMMENT) VALUES
+(1, 2, 3, 4, '2024-05-01 07:05:15', 1, 1, '호텔이 아주 좋아요'),
+(2, 1, 3, 4, '2024-05-02 07:05:15', 2, 2, '호텔이 아주 좋아요2'),
+(3, 2, 1, 4, '2024-05-03 07:05:15', 3, 3, '호텔이 아주 좋아요3'),
+(5, 2, 3, 4, '2024-05-04 07:05:15', 4, 4, '호텔이 아주 좋아요4'),
+(5, 5, 3, 4, '2024-05-05 07:05:15', 5, 5, '호텔이 아주 좋아요5'),
+(1, 2, 3, 4, '2024-05-06 07:05:15', 6, 6, '호텔이 아주 좋아요');
+-- (2, 1, 3, 4, '2024-05-07 07:05:15', 7, null, '호텔이 아주 좋아요2'),
+-- (3, 2, 1, 4, '2024-05-08 07:05:15', 8, null, '호텔이 아주 좋아요3'),
+-- (5, 2, 3, 4, '2024-05-09 07:05:15', 9, null, '호텔이 아주 좋아요4'),
+-- (5, 5, 3, 4, '2024-05-10 07:05:15', 10, null, '호텔이 아주 좋아요5');
