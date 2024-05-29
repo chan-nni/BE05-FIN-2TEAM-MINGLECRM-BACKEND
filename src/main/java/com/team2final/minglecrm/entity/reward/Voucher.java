@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -34,15 +33,4 @@ public class Voucher {
     private Long amount;
     private LocalDateTime createDate;
     private LocalDateTime expiredDate;
-    private String voucherCode;
-
-    @Builder
-    public Voucher(Employee employee, Customer customer, Long amount, LocalDateTime createDate, LocalDateTime expiredDate, String voucherCode) {
-        this.employee = employee;
-        this.customer = customer;
-        this.amount = amount;
-        this.createDate = createDate;
-        this.expiredDate = expiredDate;
-        this.voucherCode = voucherCode;
-    }
 }

@@ -6,10 +6,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import static jakarta.persistence.FetchType.LAZY;
 
@@ -29,12 +27,10 @@ public class VoucherHistory {
 
     private LocalDateTime requestDate;
 
-    @ColumnDefault("false")
     private Boolean isAuth;
 
     private LocalDateTime authDate;
 
-    @ColumnDefault("false")
     private Boolean isConvertedYn;
 
     private LocalDateTime conversionDate;
@@ -50,17 +46,4 @@ public class VoucherHistory {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    @Builder
-    public VoucherHistory(Voucher voucher, LocalDateTime requestDate, Boolean isAuth, LocalDateTime authDate, Boolean isConvertedYn, LocalDateTime conversionDate, Employee employeeManager, Employee employeeStaff, Customer customer) {
-        this.voucher = voucher;
-        this.requestDate = requestDate;
-        this.isAuth = isAuth;
-        this.authDate = authDate;
-        this.isConvertedYn = isConvertedYn;
-        this.conversionDate = conversionDate;
-        this.employeeManager = employeeManager;
-        this.employeeStaff = employeeStaff;
-        this.customer = customer;
-    }
 }
