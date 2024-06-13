@@ -27,6 +27,7 @@ public class VoucherHistory {
     @JoinColumn(name = "voucher_id")
     private Voucher voucher;
 
+    @Enumerated(value = EnumType.STRING)
     private VoucherStatusType status;
     private LocalDateTime requestDate; // 승인 요청 일시
     private LocalDateTime confirmDate; // 승인/거절 일시
@@ -65,19 +66,20 @@ public class VoucherHistory {
         this.rejectedReason = rejectedReason;
     }
 
-    public void approveVoucher(Employee approver) {
+//    public void approveVoucher(Employee approver) {
+//        this.confirmDate = LocalDateTime.now();
+//        this.employeeManager = approver;
+//    }
 
-        this.confirmDate = LocalDateTime.now();
-        this.employeeManager = approver;
-    }
-
-    public void approveVoucher() {
+    public void approveVoucher(String generatedUniqueVoucherCode) {
         this.confirmDate = LocalDateTime.now();
         this.status = VoucherStatusType.APPROVED;
+        this.voucherCode = generatedUniqueVoucherCode;
     }
 
     public void rejectVoucher(String rejectedReason) {
         this.rejectedReason = rejectedReason;
         this.confirmDate = LocalDateTime.now();
     }
+
 }

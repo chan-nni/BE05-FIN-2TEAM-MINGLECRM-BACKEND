@@ -25,9 +25,11 @@ public class VoucherHistoryResponse {
     private final Long amount;
 
     private final String rejectedReason;
+    private final String voucherCode;
 
 
     public static VoucherHistoryResponse of(VoucherHistory voucherHistory){
+        Long employeeStaffId = voucherHistory.getEmployeeStaff() != null ? voucherHistory.getEmployeeStaff().getId() : null;
         Long employeeManagerId = voucherHistory.getEmployeeManager() != null ? voucherHistory.getEmployeeManager().getId() : null;
 
         return new VoucherHistoryResponse(
@@ -36,11 +38,13 @@ public class VoucherHistoryResponse {
                 voucherHistory.getRequestDate(),
                 voucherHistory.getConfirmDate(),
                 voucherHistory.getConversionDate(),
-                voucherHistory.getEmployeeStaff().getId(),
+                employeeStaffId,
                 employeeManagerId,
                 voucherHistory.getCustomer().getId(),
                 voucherHistory.getVoucher().getAmount(),
-                voucherHistory.getRejectedReason()
+                voucherHistory.getRejectedReason(),
+                voucherHistory.getVoucherCode()
         );
     }
+
 }

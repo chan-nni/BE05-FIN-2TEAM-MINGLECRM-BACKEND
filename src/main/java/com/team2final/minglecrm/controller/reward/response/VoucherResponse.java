@@ -18,6 +18,7 @@ public class VoucherResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
+    private final String createdReason;
 
 
     public static VoucherResponse of(Voucher voucher) {
@@ -35,6 +36,7 @@ public class VoucherResponse {
                 voucher.getAmount(),
                 voucher.getCreatedDate(),
                 voucher.getStartDate(),
-                voucher.getEndDate());
+                voucher.getEndDate(),
+                voucher.getCreatedReason());
     }
 }

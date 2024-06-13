@@ -48,8 +48,13 @@ public class Voucher {
         this.amount = amount;
         this.createdReason = createdReason;
         this.isRequested = isRequested;
-        this.createdDate = createdDate;
+        this.createdDate = LocalDateTime.now();
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public void requestVoucher(Voucher voucher) {
+        this.isRequested = Boolean.TRUE;
+
     }
 }
