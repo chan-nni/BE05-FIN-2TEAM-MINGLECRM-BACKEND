@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://mingledb.cvyuiieo6kzt.us-east-1.rds.amazonaws.com:3306/mingledb
+    url: jdbc:mariadb://mingledb.cvyuiieo6kzt.us-east-1.rds.amazonaws.com:3306/mingledb?useUnicode=true&characterEncoding=utf8mb4
     username: root
     password: 12345678
 
