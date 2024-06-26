@@ -1,13 +1,13 @@
 package com.team2final.minglecrm.auth.config;
 
-import com.team2final.minglecrm.auth.infrastructure.*;
+import com.team2final.minglecrm.auth.infrastructure.BearerAuthorizationExtractor;
+import com.team2final.minglecrm.auth.infrastructure.JwtAuthenticationFilter;
+import com.team2final.minglecrm.auth.infrastructure.JwtAuthenticationProvider;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Configuration;
-
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

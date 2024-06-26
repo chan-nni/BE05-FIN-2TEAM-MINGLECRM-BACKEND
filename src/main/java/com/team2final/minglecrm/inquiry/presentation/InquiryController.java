@@ -10,7 +10,6 @@ import com.team2final.minglecrm.inquiry.dto.response.InquiryActionResponse;
 import com.team2final.minglecrm.inquiry.dto.response.InquiryDetailResponse;
 import com.team2final.minglecrm.inquiry.dto.response.InquiryReplyResponse;
 import com.team2final.minglecrm.inquiry.dto.response.InquiryResponse;
-import com.team2final.minglecrm.inquiry.domain.Inquiry;
 import com.team2final.minglecrm.inquiry.service.InquiryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

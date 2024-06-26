@@ -2,7 +2,6 @@ package com.team2final.minglecrm.statistics.service.dish;
 
 import com.team2final.minglecrm.statistics.domain.repository.dish.PurchaseDishRepository;
 import com.team2final.minglecrm.statistics.dto.response.dish.StatisticsDishResponse;
-import com.team2final.minglecrm.statistics.dto.response.reservation.DailyReservationResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

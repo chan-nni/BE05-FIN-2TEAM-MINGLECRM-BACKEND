@@ -2,11 +2,11 @@ package com.team2final.minglecrm.log.domain;
 
 import com.team2final.minglecrm.employee.domain.Employee;
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter

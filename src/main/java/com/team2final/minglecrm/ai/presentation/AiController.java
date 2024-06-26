@@ -1,14 +1,13 @@
 package com.team2final.minglecrm.ai.presentation;
 
 import com.team2final.minglecrm.ai.dto.request.HotelReviewSummaryRequest;
-import com.team2final.minglecrm.ai.dto.vo.JoinedReviews;
-import com.team2final.minglecrm.common.exception.ResultResponse;
-import com.team2final.minglecrm.ai.dto.request.ReviewSummaryRequest;
 import com.team2final.minglecrm.ai.dto.response.DiningReviewSummaryResponse;
 import com.team2final.minglecrm.ai.dto.response.HotelReviewSummaryResponse;
+import com.team2final.minglecrm.ai.dto.vo.JoinedReviews;
+import com.team2final.minglecrm.ai.service.AiService;
+import com.team2final.minglecrm.common.exception.ResultResponse;
 import com.team2final.minglecrm.review.domain.dining.DiningReviewSummary;
 import com.team2final.minglecrm.review.domain.hotel.SummaryType;
-import com.team2final.minglecrm.ai.service.AiService;
 import com.team2final.minglecrm.review.service.dining.DiningReviewService;
 import com.team2final.minglecrm.review.service.hotel.HotelReviewService;
 import lombok.RequiredArgsConstructor;

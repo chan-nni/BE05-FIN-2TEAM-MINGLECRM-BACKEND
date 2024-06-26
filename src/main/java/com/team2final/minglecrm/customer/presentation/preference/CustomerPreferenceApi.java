@@ -4,7 +4,9 @@ import com.team2final.minglecrm.customer.domain.preference.CustomerPreferenceTyp
 import com.team2final.minglecrm.customer.service.preference.CustomerPreferenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

@@ -4,12 +4,9 @@ import com.team2final.minglecrm.customer.dto.request.CustomerMemoCreateAndUpdate
 import com.team2final.minglecrm.customer.dto.request.CustomerUpdateRequest;
 import com.team2final.minglecrm.customer.dto.response.CustomerDetailResponse;
 import com.team2final.minglecrm.customer.service.CustomerService;
-import com.team2final.minglecrm.log.service.view.ViewLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

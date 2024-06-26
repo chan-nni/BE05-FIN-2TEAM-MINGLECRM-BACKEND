@@ -1,7 +1,8 @@
 
 package com.team2final.minglecrm.statistics.dto.response.reservation;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.time.LocalDate;
 

@@ -1,19 +1,16 @@
 package com.team2final.minglecrm.event.presentation;
 
 
+import com.team2final.minglecrm.auth.infrastructure.JwtUtil;
 import com.team2final.minglecrm.common.exception.ResultResponse;
 import com.team2final.minglecrm.event.dto.request.EventEmailSendRequest;
 import com.team2final.minglecrm.event.dto.request.PersonalEmailSendRequest;
 import com.team2final.minglecrm.event.dto.response.EmailLogResponse;
 import com.team2final.minglecrm.event.dto.response.EventLogResponse;
-import com.team2final.minglecrm.employee.domain.Employee;
+import com.team2final.minglecrm.event.service.EventService;
+import com.team2final.minglecrm.log.service.LogService;
 import com.team2final.minglecrm.service.email.EmailSendService;
 import com.team2final.minglecrm.service.email.EmailService;
-import com.team2final.minglecrm.event.service.EventService;
-
-import com.team2final.minglecrm.auth.infrastructure.JwtUtil;
-import com.team2final.minglecrm.log.service.LogService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;

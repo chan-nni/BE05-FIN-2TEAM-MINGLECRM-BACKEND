@@ -4,7 +4,6 @@ package com.team2final.minglecrm.customer.dto.response;
 import com.querydsl.core.annotations.QueryProjection;
 import com.team2final.minglecrm.customer.domain.Customer;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 

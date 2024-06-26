@@ -1,6 +1,5 @@
 package com.team2final.minglecrm.customer.domain.repository;
 
-import aj.org.objectweb.asm.commons.Remapper;
 import com.team2final.minglecrm.customer.domain.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

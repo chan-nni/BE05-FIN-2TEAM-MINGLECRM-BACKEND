@@ -1,6 +1,7 @@
 package com.team2final.minglecrm.auth.presentation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.team2final.minglecrm.auth.dto.response.TokenResponse;
 import com.team2final.minglecrm.auth.infrastructure.JwtUtil;
 import com.team2final.minglecrm.common.exception.ResultResponse;
 import com.team2final.minglecrm.employee.dto.request.SignInCheckRequest;
@@ -9,7 +10,6 @@ import com.team2final.minglecrm.employee.dto.request.SignInRequest;
 import com.team2final.minglecrm.employee.dto.response.AccessTokenResponse;
 import com.team2final.minglecrm.employee.dto.response.SignInEmailAuthResponse;
 import com.team2final.minglecrm.employee.dto.response.SignInValidResponse;
-import com.team2final.minglecrm.auth.dto.response.TokenResponse;
 import com.team2final.minglecrm.employee.service.EmployeeService;
 import com.team2final.minglecrm.service.email.EmailAuthService;
 import jakarta.mail.MessagingException;

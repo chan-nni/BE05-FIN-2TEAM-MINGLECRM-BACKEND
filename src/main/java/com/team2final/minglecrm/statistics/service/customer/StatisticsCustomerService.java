@@ -1,10 +1,10 @@
 package com.team2final.minglecrm.statistics.service.customer;
 
-import com.team2final.minglecrm.statistics.dto.response.customer.StatisticsCustomerResponse;
-import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import com.team2final.minglecrm.customer.domain.Customer;
 import com.team2final.minglecrm.statistics.domain.repository.customer.FrequentCustomerRepository;
 import com.team2final.minglecrm.statistics.domain.repository.customer.StatisticsCustomerRepository;
+import com.team2final.minglecrm.statistics.dto.response.customer.StatisticsCustomerResponse;
+import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

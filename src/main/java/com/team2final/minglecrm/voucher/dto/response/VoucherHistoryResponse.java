@@ -4,7 +4,6 @@ import com.querydsl.core.annotations.QueryProjection;
 import com.team2final.minglecrm.voucher.domain.VoucherHistory;
 import com.team2final.minglecrm.voucher.domain.status.VoucherStatusType;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 

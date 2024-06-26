@@ -1,11 +1,9 @@
 package com.team2final.minglecrm.review.domain.hotel;
 
 
-import com.querydsl.core.annotations.QueryProjection;
 import com.team2final.minglecrm.customer.domain.Customer;
 import com.team2final.minglecrm.reservation.domain.hotel.RoomReservation;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

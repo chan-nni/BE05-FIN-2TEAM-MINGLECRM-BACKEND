@@ -1,7 +1,7 @@
 package com.team2final.minglecrm.review.dto.hotel.response;
 
-import com.team2final.minglecrm.review.domain.hotel.HotelReview;
 import com.team2final.minglecrm.reservation.domain.hotel.RoomType;
+import com.team2final.minglecrm.review.domain.hotel.HotelReview;
 import lombok.Builder;
 import lombok.Getter;
 

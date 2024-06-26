@@ -1,7 +1,7 @@
 package com.team2final.minglecrm.service.email;
 
-import com.team2final.minglecrm.employee.domain.repository.dao.RedisDao;
 import com.team2final.minglecrm.employee.domain.repository.EmployeeRepository;
+import com.team2final.minglecrm.employee.domain.repository.dao.RedisDao;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;

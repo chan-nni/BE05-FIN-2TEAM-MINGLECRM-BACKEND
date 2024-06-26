@@ -1,13 +1,13 @@
 package com.team2final.minglecrm.reward.domain;
 
-import com.team2final.minglecrm.voucher.domain.Voucher;
 import com.team2final.minglecrm.payment.domain.Payment;
+import com.team2final.minglecrm.voucher.domain.Voucher;
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 import static jakarta.persistence.FetchType.LAZY;
 

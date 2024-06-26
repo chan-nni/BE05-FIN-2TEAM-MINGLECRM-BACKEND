@@ -1,11 +1,8 @@
 package com.team2final.minglecrm.statistics.dto.response.purchase;
 
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor

@@ -1,7 +1,5 @@
 package com.team2final.minglecrm.payment.dto.request;
 
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

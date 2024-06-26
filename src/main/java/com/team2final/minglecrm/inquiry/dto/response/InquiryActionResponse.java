@@ -2,7 +2,6 @@ package com.team2final.minglecrm.inquiry.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.stringtemplate.v4.ST;
 
 import java.time.LocalDateTime;
 

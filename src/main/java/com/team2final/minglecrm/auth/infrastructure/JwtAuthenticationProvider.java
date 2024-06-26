@@ -2,18 +2,12 @@ package com.team2final.minglecrm.auth.infrastructure;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.team2final.minglecrm.auth.dto.Subject;
-import com.team2final.minglecrm.employee.domain.Employee;
-import com.team2final.minglecrm.employee.domain.repository.EmployeeRepository;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.NoSuchElementException;
 
 @Component
 public class JwtAuthenticationProvider implements AuthenticationProvider {

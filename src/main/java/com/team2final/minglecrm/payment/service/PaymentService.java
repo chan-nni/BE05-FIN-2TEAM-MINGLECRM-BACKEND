@@ -1,11 +1,11 @@
 package com.team2final.minglecrm.payment.service;
 
+import com.team2final.minglecrm.payment.domain.Payment;
+import com.team2final.minglecrm.payment.domain.repository.PaymentRepository;
 import com.team2final.minglecrm.payment.domain.repository.PaymentSearchRepository;
 import com.team2final.minglecrm.payment.dto.request.PaymentSearchCondition;
 import com.team2final.minglecrm.payment.dto.response.PaymentDetailResponse;
 import com.team2final.minglecrm.payment.dto.response.PaymentResponse;
-import com.team2final.minglecrm.payment.domain.Payment;
-import com.team2final.minglecrm.payment.domain.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

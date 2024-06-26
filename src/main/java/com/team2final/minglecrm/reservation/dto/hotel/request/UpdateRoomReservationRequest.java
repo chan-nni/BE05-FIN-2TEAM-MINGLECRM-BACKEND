@@ -1,7 +1,8 @@
 package com.team2final.minglecrm.reservation.dto.hotel.request;
 
-import java.time.LocalDateTime;
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class UpdateRoomReservationRequest {

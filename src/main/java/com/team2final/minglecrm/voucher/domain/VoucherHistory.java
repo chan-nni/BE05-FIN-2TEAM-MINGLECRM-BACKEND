@@ -4,13 +4,12 @@ import com.team2final.minglecrm.customer.domain.Customer;
 import com.team2final.minglecrm.employee.domain.Employee;
 import com.team2final.minglecrm.voucher.domain.status.VoucherStatusType;
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 
 import static jakarta.persistence.FetchType.LAZY;
 

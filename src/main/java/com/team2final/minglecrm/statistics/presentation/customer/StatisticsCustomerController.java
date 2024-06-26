@@ -1,7 +1,7 @@
 package com.team2final.minglecrm.statistics.presentation.customer;
 
-import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import com.team2final.minglecrm.statistics.dto.response.customer.StatisticsCustomerResponse;
+import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import com.team2final.minglecrm.statistics.service.customer.StatisticsCustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

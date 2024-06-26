@@ -1,6 +1,5 @@
 package com.team2final.minglecrm.common.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 

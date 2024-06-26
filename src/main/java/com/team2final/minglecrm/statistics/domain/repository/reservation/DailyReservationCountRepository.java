@@ -1,9 +1,9 @@
 package com.team2final.minglecrm.statistics.domain.repository.reservation;
 
 import com.team2final.minglecrm.statistics.domain.DailyReservationCount;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;

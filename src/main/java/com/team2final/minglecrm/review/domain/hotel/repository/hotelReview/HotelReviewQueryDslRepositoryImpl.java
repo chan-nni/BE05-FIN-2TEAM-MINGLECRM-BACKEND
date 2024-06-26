@@ -7,7 +7,6 @@ import com.team2final.minglecrm.ai.dto.vo.QHotelReviewForSummary;
 import com.team2final.minglecrm.customer.domain.QCustomer;
 import com.team2final.minglecrm.reservation.domain.hotel.QHotelRoom;
 import com.team2final.minglecrm.reservation.domain.hotel.QRoomReservation;
-import com.team2final.minglecrm.review.domain.hotel.HotelReview;
 import com.team2final.minglecrm.review.domain.hotel.QHotelReview;
 import com.team2final.minglecrm.review.dto.hotel.request.HotelReviewConditionSearchRequest;
 import com.team2final.minglecrm.review.dto.hotel.response.HotelReviewConditionSearchResponse;

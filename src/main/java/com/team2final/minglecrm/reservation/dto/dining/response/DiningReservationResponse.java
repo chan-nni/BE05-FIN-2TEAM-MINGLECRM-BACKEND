@@ -2,11 +2,12 @@ package com.team2final.minglecrm.reservation.dto.dining.response;
 
 import com.team2final.minglecrm.reservation.domain.dining.Dish;
 import com.team2final.minglecrm.reservation.domain.dining.DishReservation;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor

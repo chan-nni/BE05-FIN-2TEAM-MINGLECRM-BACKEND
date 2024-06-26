@@ -1,10 +1,10 @@
 package com.team2final.minglecrm.review.service.hotel;
 
 import com.team2final.minglecrm.ai.dto.vo.JoinedReviews;
-import com.team2final.minglecrm.review.dto.hotel.request.HotelReviewConditionSearchRequest;
-import com.team2final.minglecrm.review.dto.hotel.response.HotelReviewConditionSearchResponse;
 import com.team2final.minglecrm.review.domain.hotel.HotelReview;
 import com.team2final.minglecrm.review.domain.hotel.repository.hotelReview.HotelReviewRepository;
+import com.team2final.minglecrm.review.dto.hotel.request.HotelReviewConditionSearchRequest;
+import com.team2final.minglecrm.review.dto.hotel.response.HotelReviewConditionSearchResponse;
 import com.team2final.minglecrm.review.dto.hotel.response.HotelReviewForSummaryResponse;
 import com.team2final.minglecrm.review.dto.hotel.response.HotelReviewMetaDataResponse;
 import lombok.RequiredArgsConstructor;

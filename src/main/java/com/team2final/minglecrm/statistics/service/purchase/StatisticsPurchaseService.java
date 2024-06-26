@@ -1,6 +1,5 @@
 package com.team2final.minglecrm.statistics.service.purchase;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team2final.minglecrm.statistics.domain.repository.purchase.PurchaseListRepository;
 import com.team2final.minglecrm.statistics.dto.response.purchase.*;
 import lombok.RequiredArgsConstructor;

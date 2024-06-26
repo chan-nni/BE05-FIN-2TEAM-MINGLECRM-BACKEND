@@ -1,9 +1,10 @@
 package com.team2final.minglecrm.reservation.dto.hotel.response;
 
 import com.team2final.minglecrm.reservation.domain.hotel.RoomReservation;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor

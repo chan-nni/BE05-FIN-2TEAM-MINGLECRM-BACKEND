@@ -1,11 +1,11 @@
 package com.team2final.minglecrm.reward.service;
 
-import com.team2final.minglecrm.reward.dto.response.RewardHistoryResponse;
-import com.team2final.minglecrm.reward.dto.response.RewardResponse;
 import com.team2final.minglecrm.reward.domain.Reward;
 import com.team2final.minglecrm.reward.domain.RewardHistory;
 import com.team2final.minglecrm.reward.domain.repository.RewardHistoryRepository;
 import com.team2final.minglecrm.reward.domain.repository.RewardRepository;
+import com.team2final.minglecrm.reward.dto.response.RewardHistoryResponse;
+import com.team2final.minglecrm.reward.dto.response.RewardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

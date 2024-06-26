@@ -2,9 +2,7 @@ package com.team2final.minglecrm.log.dto.view.response;
 
 import com.querydsl.core.annotations.QueryProjection;
 import com.team2final.minglecrm.log.domain.ViewLog;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
