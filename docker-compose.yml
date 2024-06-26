@@ -13,21 +13,23 @@ services:
       - SPRING_H2_CONSOLE_ENABLED=true
       - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
 
-  mariadb:
-    image: mariadb:latest
-    environment:
-      - MYSQL_DATABASE=mingle
-      - MYSQL_USER_HOST='%'
-      - MYSQL_ROOT_PASSWORD=1234
-    volumes:
-      - mariadb_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
+  # 아직은 H2 사용하는 관계로 우선은 주석처리 함.
+#  mariadb:
+#    image: mariadb:latest
+#    environment:
+#      - MYSQL_DATABASE=mingle
+#      - MYSQL_USER_HOST='%'
+#      - MYSQL_ROOT_PASSWORD=1234
+#    volumes:
+#      - mariadb_data:/var/lib/mysql
+#    ports:
+#      - "3306:3306"
 
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
 
-volumes:
-  mariadb_data:
+# 동일하게 H2 사용중으로 주석처리
+#volumes:
+#  mariadb_data:
