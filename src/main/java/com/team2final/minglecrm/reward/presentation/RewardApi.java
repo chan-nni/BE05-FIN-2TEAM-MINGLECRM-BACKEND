@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/rewards")
 @RequiredArgsConstructor
-public class RewardController {
+public class RewardApi {
     private final RewardService rewardService;
 
     @GetMapping

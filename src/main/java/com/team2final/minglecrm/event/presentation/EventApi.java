@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class EventController {
+public class EventApi {
 
     private final EventService eventService;
     private final EmailSendService emailSendService;

@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/statistic/dish")
-public class StatisticsDishController {
+public class StatisticsDishApi {
 
     private final StatisticsDishService statisticsDishService;
 

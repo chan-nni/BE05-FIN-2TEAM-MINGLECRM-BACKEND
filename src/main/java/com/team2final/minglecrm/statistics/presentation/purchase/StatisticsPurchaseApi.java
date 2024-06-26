@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/statistics/purchase")
-public class StatisticsPurchaseController {
+public class StatisticsPurchaseApi {
 
     private final StatisticsPurchaseService statisticsPurchaseService;
 

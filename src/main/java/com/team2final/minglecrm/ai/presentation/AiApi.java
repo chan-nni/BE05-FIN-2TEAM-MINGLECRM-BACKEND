@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
-public class AiController {
+public class AiApi {
 
     private final AiService aiService;
     private final HotelReviewService hotelReviewService;

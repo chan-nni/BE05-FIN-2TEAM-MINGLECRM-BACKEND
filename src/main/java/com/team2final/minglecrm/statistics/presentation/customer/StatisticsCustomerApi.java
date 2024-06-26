@@ -23,7 +23,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/statistics/customers")
-public class StatisticsCustomerController {
+public class StatisticsCustomerApi {
 
     private final StatisticsCustomerService statisticsCustomerService;
 

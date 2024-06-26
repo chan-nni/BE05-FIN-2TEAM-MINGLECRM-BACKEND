@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class DiningReviewController {
+public class DiningReviewApi {
 
     private final DiningReviewService diningReviewService;
 

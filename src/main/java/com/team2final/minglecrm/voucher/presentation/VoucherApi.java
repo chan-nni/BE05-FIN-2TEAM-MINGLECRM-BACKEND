@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/vouchers")
 @RequiredArgsConstructor
-public class VoucherController {
+public class VoucherApi {
 
     private final VoucherService voucherService;
 

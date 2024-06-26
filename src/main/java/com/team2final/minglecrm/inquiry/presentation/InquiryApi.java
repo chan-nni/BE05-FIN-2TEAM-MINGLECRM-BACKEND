@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/v1/inquiries")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:8081")
-public class InquiryController {
+public class InquiryApi {
 
     private final InquiryService inquiryService;
 
