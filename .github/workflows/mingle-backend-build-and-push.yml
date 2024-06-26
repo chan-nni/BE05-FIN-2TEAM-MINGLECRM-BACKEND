@@ -10,6 +10,7 @@ on:
       - feature
       - feature2
       - feature2-inquiry
+      - main-refactor
 
 # 해당 코드에서 사용될 변수 설정
 env:
