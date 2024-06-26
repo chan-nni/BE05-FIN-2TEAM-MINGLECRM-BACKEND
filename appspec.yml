@@ -12,14 +12,6 @@ permissions:
     group: ec2-user
 
 hooks:
-#  BeforeInstall:
-#    - location: scripts/before_install.sh
-#      timeout: 300
-#      runas: ubuntu
-#  Install:
-#    - location: scripts/install.sh
-#      timeout: 300
-#      runas: ubuntu
   AfterInstall:
     - location: scripts/stop.sh
       timeout: 60
@@ -28,11 +20,3 @@ hooks:
     - location: scripts/start.sh
       timeout: 60
       runas: ec2-user
-#  ApplicationStop:
-#    - location: /scripts/stop.sh
-#      timeout: 300
-#      runas: ubuntu
-#  ValidateService:
-#    - location: scripts/validate_service.sh
-#      timeout: 300
-#      runas: ubuntu
