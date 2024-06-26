@@ -31,7 +31,7 @@ dependencies {
 
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+	testImplementation 'com.tngtech.archunit:archunit:1.1.0'
 	//lombok
 	implementation 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
