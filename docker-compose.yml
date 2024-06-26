@@ -6,24 +6,21 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:mingledb
-      - SPRING_DATASOURCE_USERNAME=sa
-      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mariadb:3306/mingledb?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_H2_CONSOLE_ENABLED=true
-      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
-
-  # 아직은 H2 사용하는 관계로 우선은 주석처리 함.
-#  mariadb:
-#    image: mariadb:latest
-#    environment:
-#      - MYSQL_DATABASE=mingle
-#      - MYSQL_USER_HOST='%'
-#      - MYSQL_ROOT_PASSWORD=1234
-#    volumes:
-#      - mariadb_data:/var/lib/mysql
-#    ports:
-#      - "3306:3306"
+      - SPRING_H2_CONSOLE_ENABLED=false  # H2 console 비활성화
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_DATABASE=mingle
+      - MYSQL_USER_HOST='%'
+      - MYSQL_ROOT_PASSWORD=1234
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   redis:
     image: redis:latest
