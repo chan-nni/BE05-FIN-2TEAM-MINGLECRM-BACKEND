@@ -127,12 +127,13 @@ public class LoginApi {
 
         System.out.println("renew 시작");
         if (rtk == null) {
+            System.out.println("RKT  : " + rtk);
             return new ResultResponse<>(HttpStatus.UNAUTHORIZED.value(), "fail", null);
         }
-
+        System.out.println("1  : " + rtk);
         TokenResponse tokenResponse = jwtUtil.renewToken(rtk);
         Cookie cookie = createRefreshTokenCookie(tokenResponse);
-
+        System.out.println("2  : " + rtk);
         response.addCookie(cookie);
 
         return new ResultResponse<>(HttpStatus.OK.value(), "success", AccessTokenResponse.builder()

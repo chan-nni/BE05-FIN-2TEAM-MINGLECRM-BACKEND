@@ -71,7 +71,7 @@ public class SecurityConfig {
                         config.setAllowedHeaders(Collections.singletonList("*"));
                         config.setExposedHeaders(Arrays.asList("Authorization"));
                         config.setAllowCredentials(true);
-                        config.setMaxAge(3600L);
+                        config.setMaxAge(360000L);
                         return config;
                     }
                 }))
