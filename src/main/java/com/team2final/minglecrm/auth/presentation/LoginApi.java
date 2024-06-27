@@ -139,7 +139,6 @@ public class LoginApi {
         System.out.println("2  : " + rtk);
         Cookie cookie = createRefreshTokenCookie(tokenResponse, response);
         System.out.println("3  : " + rtk);
-        response.addCookie(cookie);
         System.out.println("4  : " + rtk);
 
         return new ResultResponse<>(HttpStatus.OK.value(), "success", AccessTokenResponse.builder()
@@ -160,7 +159,7 @@ public class LoginApi {
             Cookie cookie = createRefreshTokenCookie(tokenResponse, response);
             System.out.println("debug >>>>>>>>>>>> refresh cookie  , "+ cookie);
 
-            response.addCookie(cookie);
+//            response.addCookie(cookie);
 
             return new ResultResponse<>(HttpStatus.OK.value(), "success", AccessTokenResponse.builder()
                     .atk(tokenResponse.getAtk())
