@@ -125,6 +125,7 @@ public class LoginApi {
                                                      @CookieValue(value="rtk", defaultValue = "") String rtk
     ) throws JsonProcessingException {
 
+        System.out.println("renew 시작");
         if (rtk == null) {
             return new ResultResponse<>(HttpStatus.UNAUTHORIZED.value(), "fail", null);
         }
