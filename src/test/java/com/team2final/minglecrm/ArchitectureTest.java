@@ -25,7 +25,7 @@ public class ArchitectureTest {
     }
 
     @Test
-    @DisplayName("presentation 패키지 안에 있는 클래스들은 api로 끝난다.")
+    @DisplayName("presentation 패키지 안에 있는 클래스들은 API로 끝난다.")
     void apiTest() {
 
         ArchRule rule = classes()
@@ -36,7 +36,7 @@ public class ArchitectureTest {
     }
 
     @Test
-    @DisplayName("presentation 패키지 안에 있는 클@RestController 애노테이션이 붙어있어야 한다.")
+    @DisplayName("presentation 패키지 안에 있는 클래스들은 @RestController 애노테이션이 붙어있어야 한다.")
     void apiAnnotatedWithRestControllerTest() {
 
         ArchRule annotationRule = classes()
@@ -159,7 +159,7 @@ public class ArchitectureTest {
     }
 
     @Test
-    @DisplayName("config 패키지 안에 있는 클래스는 Config 또는 Configuration으로 끝나야하고 @Configuration 애너테이션이 붙어있어야 한다.")
+    @DisplayName("config 패키지 안에 있는 클래스는 Config 또는 Configuration으로 끝나야 하고 @Configuration 애너테이션이 붙어있어야 한다.")
     void configTest() {
 
         ArchRule rule = classes()
