@@ -95,15 +95,17 @@ public class JwtUtil {
     }
 
     public TokenResponse renewToken(String rtk) throws JsonProcessingException {
+        System.out.println("renew service : 1");
         Subject subject = getSubject(rtk);
+        System.out.println("renew service : 2" + subject);
 
         String rtkInRedis = redisDao.getValues(subject.getEmail());
-
+        System.out.println("renew service : 3" + rtkInRedis);
         if (Objects.isNull(rtkInRedis) || !subject.getType().equals("RTK"))
             throw new BadCredentialsException("만료된 RefreshToken입니다.");
-
+        System.out.println("renew service : 4");
         redisDao.deleteValues(subject.getEmail()); // 갱신을 위해 RefreshToken 제거
-
+        System.out.println("renew service : 5");
         Employee employee = employeeRepository.findByEmail(subject.getEmail()).orElseThrow(() -> new IllegalArgumentException("잘못된 이용자 입니다."));
 
         return createTokenResponse(employee);

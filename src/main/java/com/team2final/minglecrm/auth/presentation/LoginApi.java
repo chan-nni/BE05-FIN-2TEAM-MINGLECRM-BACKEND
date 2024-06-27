@@ -122,19 +122,21 @@ public class LoginApi {
     @GetMapping("/api/v1/auth/renew")
     public ResultResponse<AccessTokenResponse> reNew(HttpServletRequest request,
                                                      HttpServletResponse response,
-                                                     @CookieValue(value="rtk", defaultValue = "") String rtk
+                                                     @CookieValue(value="rtk") String rtk
     ) throws JsonProcessingException {
 
-        System.out.println("renew 시작");
+        System.out.println("renew 시작" + rtk);
         if (rtk == null) {
             System.out.println("RKT  : " + rtk);
             return new ResultResponse<>(HttpStatus.UNAUTHORIZED.value(), "fail", null);
         }
         System.out.println("1  : " + rtk);
         TokenResponse tokenResponse = jwtUtil.renewToken(rtk);
-        Cookie cookie = createRefreshTokenCookie(tokenResponse);
         System.out.println("2  : " + rtk);
+        Cookie cookie = createRefreshTokenCookie(tokenResponse);
+        System.out.println("3  : " + rtk);
         response.addCookie(cookie);
+        System.out.println("4  : " + rtk);
 
         return new ResultResponse<>(HttpStatus.OK.value(), "success", AccessTokenResponse.builder()
                 .atk(tokenResponse.getAtk())
