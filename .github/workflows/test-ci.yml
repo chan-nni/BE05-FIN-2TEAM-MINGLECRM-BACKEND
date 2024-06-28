@@ -30,9 +30,19 @@ jobs:
       - name: Run tests with Gradle
         run: ./gradlew test
 
-      - name: Test Report
-        if: failure()
-        run: cat build/reports/tests/test/index.html | xargs echo "Test Report:"
+      - name: Save test results
+        run: mkdir -p build/test-results && cp -r build/test-results/test build/test-results/
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: build/test-results/test
+
+      - name: Upload test results to GitHub
+        uses: actions/upload-test-results@v1
+        with:
+          results: build/test-results/test
 
       - name: Slack Notification
         uses: 8398a7/action-slack@v3
