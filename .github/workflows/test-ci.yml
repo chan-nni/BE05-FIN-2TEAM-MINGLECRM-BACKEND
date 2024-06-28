@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  checks: write
 
 jobs:
   build-and-test:
@@ -36,19 +37,26 @@ jobs:
         with:
           files: '**/build/test-results/test/TEST-*.xml'
 
-      - name: JUnit Report
-        uses: mikepenz/action-junit-report@v3
-        if: always()
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
         with:
-          report_paths: '**/build/test-results/test/TEST-*.xml'
+          name: test-results
+          path: build/test-results/test
+
+
+#      - name: JUnit Report
+#        uses: mikepenz/action-junit-report@v3
+#        if: always()
+#        with:
+#          report_paths: '**/build/test-results/test/TEST-*.xml'
 #          token: ${{ github.token }}
 
-      - name: Slack Notification
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          author_name: www-be
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
+#      - name: Slack Notification
+#        uses: 8398a7/action-slack@v3
+#        with:
+#          status: ${{ job.status }}
+#          author_name: www-be
+#          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#        if: always()
