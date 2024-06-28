@@ -49,7 +49,7 @@ public class LoginApi {
     private Cookie createRefreshTokenCookie(TokenResponse tokenResponse, HttpServletResponse response) {
         Cookie cookie = new Cookie("rtk", tokenResponse.getRtk());
         cookie.setHttpOnly(true);
-//            cookie.setSecure(true); // Https 사용 시
+        cookie.setSecure(true); // Https 사용 시
         cookie.setPath("/");
 
         Date now = new Date();
