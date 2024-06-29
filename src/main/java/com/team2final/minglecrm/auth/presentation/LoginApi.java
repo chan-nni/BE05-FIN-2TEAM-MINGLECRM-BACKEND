@@ -57,7 +57,7 @@ public class LoginApi {
         int age = (int) (tokenResponse.getRtkExpiration().getTime() - now.getTime()) / 1000;
         cookie.setMaxAge(age);
 
-        response.addHeader("Set-Cookie", String.format("%s=%s; Path=%s; Max-Age=%d; HttpOnly; SameSite=None",
+        response.addHeader("Set-Cookie", String.format("%s=%s; Path=%s; Max-Age=%d;",
                 cookie.getName(), cookie.getValue(), cookie.getPath(), cookie.getMaxAge()));
 
         System.out.println("debug >>> createRefreshTokenCookie , "+cookie);
