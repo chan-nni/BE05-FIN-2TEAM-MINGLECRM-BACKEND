@@ -66,7 +66,7 @@ public class SecurityConfig {
                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                         CorsConfiguration config = new CorsConfiguration();
-                        config.setAllowedOrigins(Collections.singletonList("https://d14sl6ndoksytf.cloudfront.net"));
+                        config.setAllowedOrigins(Collections.singletonList("https://www.mingle-crm.com"));
                         config.setAllowedMethods(Collections.singletonList("*"));
                         config.setAllowedHeaders(Collections.singletonList("*"));
                         config.setExposedHeaders(Arrays.asList("Authorization"));
