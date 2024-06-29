@@ -49,7 +49,7 @@ public class LoginApi {
     private Cookie createRefreshTokenCookie(TokenResponse tokenResponse, HttpServletResponse response) {
         Cookie cookie = new Cookie("rtk", tokenResponse.getRtk());
         cookie.setDomain(".mingle-crm.com");
-        cookie.setHttpOnly(true);
+        cookie.setHttpOnly(false);
         cookie.setSecure(true); // Https 사용 시
         cookie.setPath("/");
 
