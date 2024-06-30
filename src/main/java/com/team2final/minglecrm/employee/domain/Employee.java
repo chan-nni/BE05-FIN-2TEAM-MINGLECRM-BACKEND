@@ -1,6 +1,7 @@
 package com.team2final.minglecrm.employee.domain;
 
 
+import com.team2final.minglecrm.employee.dto.request.SignUpRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -51,5 +52,14 @@ public class Employee {
 
     public void updateEmployeeInfo(String encodedPassword) {
         this.password = encodedPassword;
+    }
+
+    public void createEmployee(SignUpRequest signUpRequest) {
+        this.name = signUpRequest.getName();
+        this.email = signUpRequest.getEmail();
+        this.password = signUpRequest.getPassword();
+        this.authority = signUpRequest.getAuthority();
+        this.createdDate = LocalDateTime.now();
+        this.isDeleted = false;
     }
 }

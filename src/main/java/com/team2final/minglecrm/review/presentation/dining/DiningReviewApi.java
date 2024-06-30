@@ -33,17 +33,21 @@ public class DiningReviewApi {
 
     @GetMapping("/api/dining/rating/average")
     public ResultResponse<Double> getDiningAverageRatingByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                                                 @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
+                                                                 @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+                                                                 @RequestParam(name = "restaurant") String restaurant) {
 
-        Double response =  diningReviewService.getDiningReviewAverageRatingByPeriod(startDate, endDate);
+        Double response =  diningReviewService.getDiningReviewAverageRatingByPeriodAndRestaurant(startDate, endDate, restaurant);
 
         return new ResultResponse<>(HttpStatus.OK.value(), "sucess", response);
     }
 
     @GetMapping("/api/dining/review/count")
-    public ResultResponse<Long> getDiningReviewsNumberByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                               @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
-        Long response = diningReviewService.getDiningReviewsNumberByPeriod(startDate, endDate);
+    public ResultResponse<Long> getDiningReviewsNumberByPeriod(
+                                                @RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+                                                @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+                                                @RequestParam(name = "restaurant") String restaurant) {
+
+        Long response = diningReviewService.getDiningReviewsNumberByPeriod(startDate, endDate, restaurant);
         return new ResultResponse<>(HttpStatus.OK.value(), "sucess", response);
     }
 

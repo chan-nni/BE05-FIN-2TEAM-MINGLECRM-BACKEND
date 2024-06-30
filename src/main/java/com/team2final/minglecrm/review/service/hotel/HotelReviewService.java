@@ -67,21 +67,44 @@ public class HotelReviewService {
 
     }
 
-    public Double getHotelReviewAverageRatingByPeriod(LocalDateTime startDate, LocalDateTime endDate) {
-        List<HotelReview> hotelReviews = hotelReviewRepository.findHotelReviewByCreatedTimeBetween(startDate, endDate);
+    public Double getHotelReviewAverageRatingByPeriod(LocalDateTime startDate, LocalDateTime endDate, String hotel) {
+
+        if (hotel.equals("All")) {
+            hotel = null;
+        }
+
+        HotelReviewConditionSearchRequest request = new HotelReviewConditionSearchRequest(null, hotel, null, startDate, endDate);
+        List<HotelReviewForSummaryResponse> hotelReviews = hotelReviewRepository.findHotelReviewsByCondition(request);
+
         double numberOfReviews = (double) hotelReviews.size();
         double averageRating = 0;
-        for(HotelReview hotelReview : hotelReviews) {
+        for(HotelReviewForSummaryResponse hotelReview : hotelReviews) {
             averageRating += getAverageRating(hotelReview);
         }
         return averageRating / numberOfReviews;
     }
 
-    public Long getHotelReviewsNumberByPeriod(LocalDateTime startDate, LocalDateTime endDate) {
-        return hotelReviewRepository.countHotelReviewByCreatedTimeBetween(startDate, endDate);
+    public Long getHotelReviewsNumberByPeriod(LocalDateTime startDate, LocalDateTime endDate, String hotel) {
+
+        if (hotel.equals("All")) {
+            hotel = null;
+        }
+
+        HotelReviewConditionSearchRequest request = new HotelReviewConditionSearchRequest(null, hotel, null, startDate, endDate);
+        List<HotelReviewForSummaryResponse> hotelReviews = hotelReviewRepository.findHotelReviewsByCondition(request);
+
+
+        return (long) hotelReviews.size();
     }
 
     public Double getAverageRating(HotelReview hotelReview) {
+        return (hotelReview.getCleanlinessRating() +
+                hotelReview.getConvenienceRating() +
+                hotelReview.getKindnessRating() +
+                hotelReview.getLocationRating())/4;
+    }
+
+    public Double getAverageRating(HotelReviewForSummaryResponse hotelReview) {
         return (hotelReview.getCleanlinessRating() +
                 hotelReview.getConvenienceRating() +
                 hotelReview.getKindnessRating() +

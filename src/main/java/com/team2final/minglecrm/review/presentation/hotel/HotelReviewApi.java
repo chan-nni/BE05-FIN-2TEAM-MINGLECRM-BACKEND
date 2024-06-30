@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.Result;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -37,14 +38,19 @@ public class HotelReviewApi {
     }
 
     @GetMapping("/api/hotel/rating/average")
-    public Double getHotelAverageRatingByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                                @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
-        return hotelReviewService.getHotelReviewAverageRatingByPeriod(startDate, endDate);
+    public ResultResponse<Double> getHotelAverageRatingByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+                                                @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+                                                @RequestParam(name = "hotel") String hotel) {
+        Double response = hotelReviewService.getHotelReviewAverageRatingByPeriod(startDate, endDate, hotel);
+
+        return new ResultResponse<>(HttpStatus.OK.value(), "success", response);
     }
 
     @GetMapping("/api/hotel/review/count")
-    public Long getHotelReviewsNumberByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                              @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
-        return hotelReviewService.getHotelReviewsNumberByPeriod(startDate, endDate);
+    public ResultResponse<Long> getHotelReviewsNumberByPeriod(@RequestParam(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+                                                     @RequestParam(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+                                                     @RequestParam(name = "hotel") String hotel) {
+        Long response = hotelReviewService.getHotelReviewsNumberByPeriod(startDate, endDate, hotel);
+        return new ResultResponse<>(HttpStatus.OK.value(), "success", response);
     }
 }

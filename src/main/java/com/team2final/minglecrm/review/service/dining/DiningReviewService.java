@@ -1,11 +1,12 @@
 package com.team2final.minglecrm.review.service.dining;
 
 import com.team2final.minglecrm.ai.dto.vo.JoinedReviews;
+import com.team2final.minglecrm.review.dto.dining.request.DiningReviewConditionSearchRequest;
 import com.team2final.minglecrm.reservation.dto.dining.response.DiningReviewConditionSearchResponse;
 import com.team2final.minglecrm.reservation.dto.dining.response.DiningReviewResponse;
 import com.team2final.minglecrm.review.domain.dining.DiningReview;
 import com.team2final.minglecrm.review.domain.dining.repository.DiningReviewRepository;
-import com.team2final.minglecrm.review.dto.dining.request.DiningReviewConditionSearchRequest;
+import com.team2final.minglecrm.review.dto.dining.response.DiningReviewConditionSearchForSummaryResponse;
 import com.team2final.minglecrm.review.dto.dining.response.DiningReviewMetaDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -79,11 +80,38 @@ public class DiningReviewService {
         return averageRating / numOfReviews;
     }
 
-    public Long getDiningReviewsNumberByPeriod(LocalDateTime startDate, LocalDateTime endDate) {
-        return diningReviewRepository.countDiningReviewByCreatedDateBetween(startDate, endDate);
+    public Double getDiningReviewAverageRatingByPeriodAndRestaurant(LocalDateTime startDate, LocalDateTime endDate, String restaurant) {
+        if(restaurant.equals("All")) {
+            restaurant = null;
+        }
+        DiningReviewConditionSearchRequest request = new DiningReviewConditionSearchRequest(null, restaurant, startDate, endDate);
+        List<DiningReviewConditionSearchForSummaryResponse> diningReviewResponses = diningReviewRepository.findDiningReviewsByCondition(request);
+        double numOfReviews = (double) diningReviewResponses.size();
+        double averageRating = 0;
+        for ( DiningReviewConditionSearchForSummaryResponse response: diningReviewResponses) {
+            averageRating += getAverageRating(response);
+        }
+        return averageRating / numOfReviews;
+    }
+
+    public Long getDiningReviewsNumberByPeriod(LocalDateTime startDate, LocalDateTime endDate, String restaurant) {
+        if(restaurant.equals("All")) {
+            restaurant = null;
+        }
+        DiningReviewConditionSearchRequest request = new DiningReviewConditionSearchRequest(null, restaurant, startDate, endDate);
+        List<DiningReviewConditionSearchForSummaryResponse> diningReviewResponses = diningReviewRepository.findDiningReviewsByCondition(request);
+
+        return (long) diningReviewResponses.size();
     }
 
     public Double getAverageRating(DiningReview diningReview) {
+        return (diningReview.getCleanlinessRating() +
+                diningReview.getAtmosphereRating() +
+                diningReview.getKindnessRating() +
+                diningReview.getTasteRating())/4;
+    }
+
+    public Double getAverageRating(DiningReviewConditionSearchForSummaryResponse diningReview) {
         return (diningReview.getCleanlinessRating() +
                 diningReview.getAtmosphereRating() +
                 diningReview.getKindnessRating() +

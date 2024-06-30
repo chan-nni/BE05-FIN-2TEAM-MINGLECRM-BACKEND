@@ -1,17 +1,22 @@
 package com.team2final.minglecrm.reservation.service.dining;
 
+import com.team2final.minglecrm.reservation.domain.dining.repository.DishReservationQueryDslRepository;
+import com.team2final.minglecrm.reservation.dto.dining.request.UpdateDiningReservationRequest;
+import com.team2final.minglecrm.reservation.dto.dining.response.DiningReservationResponse;
 import com.team2final.minglecrm.reservation.domain.dining.Dish;
 import com.team2final.minglecrm.reservation.domain.dining.DishReservation;
 import com.team2final.minglecrm.reservation.domain.dining.repository.DishRepository;
 import com.team2final.minglecrm.reservation.domain.dining.repository.DishReservationRepository;
-import com.team2final.minglecrm.reservation.dto.dining.request.UpdateDiningReservationRequest;
-import com.team2final.minglecrm.reservation.dto.dining.response.DiningReservationResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import com.team2final.minglecrm.reservation.dto.dining.response.DishReservationStatisticsResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +24,7 @@ public class DishReservationService {
 
     private final DishReservationRepository dishReservationRepository;
     private final DishRepository dishRepository;
+    private final DishReservationQueryDslRepository dishReservationQueryDslRepository;
 
     public List<DiningReservationResponse> findById(Long customerId) {
         List<DishReservation> dishReservations = dishReservationRepository.findByCustomerId(
@@ -68,4 +74,8 @@ public class DishReservationService {
         }
     }
 
+    @Transactional
+    public DishReservationStatisticsResponse getDishReservationStatistics(LocalDate startDate, LocalDate endDate) {
+        return dishReservationQueryDslRepository.findDishReservationStatistics(startDate, endDate);
+    }
 }

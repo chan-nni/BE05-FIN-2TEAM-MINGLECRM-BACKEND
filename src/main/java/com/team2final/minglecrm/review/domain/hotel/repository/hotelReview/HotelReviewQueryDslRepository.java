@@ -13,6 +13,5 @@ import java.util.List;
 public interface HotelReviewQueryDslRepository {
     Page<HotelReviewConditionSearchResponse> searchByExpression(HotelReviewConditionSearchRequest condition, Pageable pageable);
     List<HotelReviewForSummary> findAllByStartDateCondition(LocalDateTime startDate);
-
     List<HotelReviewForSummaryResponse> findHotelReviewsByCondition(HotelReviewConditionSearchRequest condition);
 }

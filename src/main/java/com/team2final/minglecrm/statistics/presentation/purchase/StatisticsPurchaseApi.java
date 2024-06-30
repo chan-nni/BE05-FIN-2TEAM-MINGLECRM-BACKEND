@@ -18,24 +18,28 @@ public class StatisticsPurchaseApi {
 
     private final StatisticsPurchaseService statisticsPurchaseService;
 
+    // 판매 dish 개수 조회(기간 설정 가능)
     @GetMapping("/statistics/dishname")
     public List<StatisticsDishNameResponse> getStatisticsByDishName(@RequestParam(value = "startDate", required = false) LocalDate startDate,
                                                                     @RequestParam(value = "endDate", required = false) LocalDate endDate) {
         return statisticsPurchaseService.getStatisticsByDishName(startDate, endDate);
     }
 
+    // 판매 호텔 객수 조회(기간 설정 가능)
     @GetMapping("/statistics/roomtype")
     public List<StatisticsRoomTypeResponse> getStatisticsByRoomType(@RequestParam(value = "startDate", required = false) LocalDate startDate,
                                                                     @RequestParam(value = "endDate", required = false) LocalDate endDate) {
         return statisticsPurchaseService.getStatisticsByRoomType(startDate, endDate);
     }
 
+    // 판매 dish, 호텔 개수 조회(기간 설정 가능)
     @GetMapping("/statistics/dishname-and-roomtype")
     public List<StatisticsDishNameAndRoomTypeResponse> getStatisticsByDishNameAndRoomType(@RequestParam(value = "startDate", required = false) LocalDate startDate,
                                                                                           @RequestParam(value = "endDate", required = false) LocalDate endDate) {
         return statisticsPurchaseService.getStatisticsByDishNameAndRoomType(startDate, endDate);
     }
 
+    // 성별 별 판매 dish, 호텔 개수 조회(기간 설정 가능)
     @GetMapping("/statistics/gender")
     public List<StatisticsGenderResponse> getStatisticsByGender(@RequestParam(value = "startDate", required = false) LocalDate startDate,
                                                                 @RequestParam(value = "endDate", required = false) LocalDate endDate,
@@ -43,6 +47,7 @@ public class StatisticsPurchaseApi {
         return statisticsPurchaseService.getStatisticsByGender(startDate, endDate, gender);
     }
 
+    // 등급 별 판매 dish, 호텔 개수 조회(기간 설정 가능)
     @GetMapping("/statistics/grade")
     public List<StatisticsGradeResponse> getStatisticsByGrade(@RequestParam(value = "startDate", required = false) LocalDate startDate,
                                                               @RequestParam(value = "endDate", required = false) LocalDate endDate,

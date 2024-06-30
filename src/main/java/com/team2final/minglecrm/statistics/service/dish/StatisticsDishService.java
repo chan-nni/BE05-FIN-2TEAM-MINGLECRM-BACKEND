@@ -1,6 +1,8 @@
 package com.team2final.minglecrm.statistics.service.dish;
 
+import com.team2final.minglecrm.statistics.domain.PurchaseDish;
 import com.team2final.minglecrm.statistics.domain.repository.dish.PurchaseDishRepository;
+import com.team2final.minglecrm.statistics.dto.response.dish.DishAmountResponse;
 import com.team2final.minglecrm.statistics.dto.response.dish.StatisticsDishResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -46,4 +48,15 @@ public class StatisticsDishService {
         return result;
     }
 
+    // 특정 기간 판매된 음식 가격 총합
+    public Long calculateTotalAmount(LocalDate startDate, LocalDate endDate) {
+        return purchaseDishRepository.findTotalAmountByPurchaseDateBetween(startDate, endDate);
+    }
+
+    // 전날 판매된 음식 가격 총합
+    public Long calculateTotalPriceYesterday() {
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        Long result = purchaseDishRepository.findTotalAmountByPurchaseDate(yesterday) != null ? purchaseDishRepository.findTotalAmountByPurchaseDate(yesterday) : 0L;
+        return result;
+    }
 }

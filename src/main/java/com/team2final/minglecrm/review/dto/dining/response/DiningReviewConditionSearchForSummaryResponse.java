@@ -1,9 +1,13 @@
 package com.team2final.minglecrm.review.dto.dining.response;
 
 import com.querydsl.core.annotations.QueryProjection;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class DiningReviewConditionSearchForSummaryResponse {
 
     private Double tasteRating;

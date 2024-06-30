@@ -4,6 +4,7 @@ package com.team2final.minglecrm.event.presentation;
 import com.team2final.minglecrm.auth.infrastructure.JwtUtil;
 import com.team2final.minglecrm.common.exception.ResultResponse;
 import com.team2final.minglecrm.event.dto.request.EventEmailSendRequest;
+import com.team2final.minglecrm.event.dto.request.GroupEmailSendRequest;
 import com.team2final.minglecrm.event.dto.request.PersonalEmailSendRequest;
 import com.team2final.minglecrm.event.dto.response.EmailLogResponse;
 import com.team2final.minglecrm.event.dto.response.EventLogResponse;
@@ -49,6 +50,15 @@ public class EventApi {
         String EmployeeEmail = SecurityContextHolder.getContext().getAuthentication().getName();
 
         emailService.sendPersonalEmail(request, EmployeeEmail);
+
+        return new ResultResponse<>(HttpStatus.OK.value(), "success", null);
+    }
+
+    @PostMapping("/api/email/group")
+    public ResultResponse<Void> sendGroupEmail(@RequestBody GroupEmailSendRequest request) throws Exception {
+        String EmployeeEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        emailService.sendGroupEmail(request, EmployeeEmail);
 
         return new ResultResponse<>(HttpStatus.OK.value(), "success", null);
     }

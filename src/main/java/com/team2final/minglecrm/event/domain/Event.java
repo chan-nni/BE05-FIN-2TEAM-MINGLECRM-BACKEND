@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -49,4 +50,9 @@ public class Event {
 //        this.readCount += 1;
 //        return readCount;
 //    }
+
+    @Transactional
+    public void increaseSendCount() {
+        this.sendCount += 1;
+    }
 }

@@ -1,10 +1,12 @@
 package com.team2final.minglecrm.statistics.service.customer;
 
+import com.team2final.minglecrm.customer.domain.repository.CustomerSearchRepository;
+import com.team2final.minglecrm.statistics.dto.response.customer.RevisitCustomerStatisticsResponse;
+import com.team2final.minglecrm.statistics.dto.response.customer.StatisticsCustomerResponse;
+import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import com.team2final.minglecrm.customer.domain.Customer;
 import com.team2final.minglecrm.statistics.domain.repository.customer.FrequentCustomerRepository;
 import com.team2final.minglecrm.statistics.domain.repository.customer.StatisticsCustomerRepository;
-import com.team2final.minglecrm.statistics.dto.response.customer.StatisticsCustomerResponse;
-import com.team2final.minglecrm.statistics.dto.response.customer.VisitCustomerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +27,7 @@ public class StatisticsCustomerService {
 
     private final StatisticsCustomerRepository statisticsCustomerRepository;
     private final FrequentCustomerRepository frequentCustomerRepository;
+    private final CustomerSearchRepository customerSearchRepository;
 
     private Date convertToDate(LocalDate localDate) {
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -53,6 +56,32 @@ public class StatisticsCustomerService {
 
     public List<VisitCustomerResponse> findCustomersByReservationDateBetween(LocalDate startLocalDate, LocalDate endLocalDate, Pageable pageable) {
         Page<Customer> customers = statisticsCustomerRepository.findCustomersByReservationDateBetween(startLocalDate, endLocalDate, pageable);
+        return customers.stream()
+                .map(customer -> customer.getRoomReservations().stream()
+                        .map(reservation -> VisitCustomerResponse.builder()
+                                .id(customer.getId())
+                                .name(customer.getName())
+                                .phone(customer.getPhone())
+                                .employeeName(customer.getEmployee() != null ? customer.getEmployee().getName() : null)
+                                .createdDate(customer.getCreatedDate())
+                                .grade(customer.getGrade())
+                                .address(customer.getAddress())
+                                .memo(customer.getMemo())
+                                .gender(customer.getGender())
+                                .birth(customer.getBirth())
+                                .visitStartDate(reservation.getStartDate())
+                                .visitEndDate(reservation.getEndDate())
+                                .build()
+                        )
+                        .collect(Collectors.toList())
+                )
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    // 페이징처리 x
+    public List<VisitCustomerResponse> findCustomersByReservationDateBetween(LocalDate startLocalDate, LocalDate endLocalDate) {
+        List<Customer> customers = statisticsCustomerRepository.findCustomersByReservationDateBetween(startLocalDate, endLocalDate);
         return customers.stream()
                 .map(customer -> customer.getRoomReservations().stream()
                         .map(reservation -> VisitCustomerResponse.builder()
@@ -127,7 +156,7 @@ public class StatisticsCustomerService {
 
     public Map<String, Double> calculateRevisitRateByGrade() {
         Map<String, Double> revisitRateByGrade = new HashMap<>();
-        String[] grades = {"NEW", "BASIC", "VIP", "VVIP"};
+        String[] grades = {"BROWN", "SILVER", "GOLD", "DIAMOND"};
 
         for (String grade : grades) {
             long totalCustomersByGrade = statisticsCustomerRepository.countByGrade(grade);
@@ -141,5 +170,12 @@ public class StatisticsCustomerService {
             }
         }
         return revisitRateByGrade;
+    }
+
+    public RevisitCustomerStatisticsResponse getRevisitCustomerStatistics() {
+        return customerSearchRepository.findRevisitCustomerStatistics();
+    }
+    public RevisitCustomerStatisticsResponse getVisitCustomerStatistics() {
+        return customerSearchRepository.findVisitCustomerStatistics();
     }
 }

@@ -13,6 +13,7 @@ public class CustomerDetailResponse {
 
     private final Long id;
     private final String name;
+    private final String email;
     private final String phone;
     private final String employeeName;
     private final String memo;
@@ -26,6 +27,7 @@ public class CustomerDetailResponse {
         return new CustomerDetailResponse(
                 customer.getId(),
                 customer.getName(),
+                customer.getEmail(),
                 customer.getPhone(),
                 customer.getEmployee().getName(),
                 customer.getMemo(),

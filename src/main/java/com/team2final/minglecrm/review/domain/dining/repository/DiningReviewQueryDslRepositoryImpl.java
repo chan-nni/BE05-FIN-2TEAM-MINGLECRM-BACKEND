@@ -7,6 +7,7 @@ import com.team2final.minglecrm.ai.dto.vo.QDiningReviewForSummary;
 import com.team2final.minglecrm.customer.domain.QCustomer;
 import com.team2final.minglecrm.reservation.domain.dining.QDishReservation;
 import com.team2final.minglecrm.reservation.dto.dining.response.DiningReviewConditionSearchResponse;
+import com.team2final.minglecrm.reservation.dto.dining.response.DiningReviewResponse;
 import com.team2final.minglecrm.reservation.dto.dining.response.QDiningReviewConditionSearchResponse;
 import com.team2final.minglecrm.review.domain.dining.QDiningReview;
 import com.team2final.minglecrm.review.dto.dining.request.DiningReviewConditionSearchRequest;

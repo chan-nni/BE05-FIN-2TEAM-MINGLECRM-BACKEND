@@ -12,6 +12,7 @@ public class CustomerResponse {
 
     private final Long id;
     private final String name;
+    private final String email;
     private final String phone;
     private final String employeeName;
     private final String grade;
@@ -22,6 +23,7 @@ public class CustomerResponse {
         return new CustomerResponse(
                 customer.getId(),
                 customer.getName(),
+                customer.getEmail(),
                 customer.getPhone(),
                 customer.getEmployee().getName(),
                 customer.getGrade(),
@@ -31,9 +33,10 @@ public class CustomerResponse {
     }
 
     @QueryProjection
-    public CustomerResponse(Long id, String name, String phone, String employeeName, String grade, String gender, LocalDate birth) {
+    public CustomerResponse(Long id, String name, String email, String phone, String employeeName, String grade, String gender, LocalDate birth) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.phone = phone;
         this.employeeName = employeeName;
         this.grade = grade;

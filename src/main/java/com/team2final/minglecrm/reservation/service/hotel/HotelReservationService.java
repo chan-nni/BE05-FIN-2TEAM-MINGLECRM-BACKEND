@@ -1,22 +1,28 @@
 package com.team2final.minglecrm.reservation.service.hotel;
 
-import com.team2final.minglecrm.reservation.domain.hotel.RoomReservation;
-import com.team2final.minglecrm.reservation.domain.hotel.repository.RoomReservationRepository;
+import com.team2final.minglecrm.reservation.domain.hotel.repository.RoomReservationQueryDslRepository;
+import com.team2final.minglecrm.reservation.domain.hotel.repository.RoomReservationQueryDslRepositoryImpl;
 import com.team2final.minglecrm.reservation.dto.hotel.request.UpdateRoomReservationRequest;
 import com.team2final.minglecrm.reservation.dto.hotel.response.RoomReservationResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.team2final.minglecrm.reservation.domain.hotel.RoomReservation;
+import com.team2final.minglecrm.reservation.domain.hotel.repository.RoomReservationRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import com.team2final.minglecrm.reservation.dto.hotel.response.RoomReservationStatisticsResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class HotelReservationService {
 
     private final RoomReservationRepository roomReservationRepository;
+    private final RoomReservationQueryDslRepository roomReservationQueryDslRepository;
 
     @Transactional
     public List<RoomReservationResponse> findById(Long customerId) {
@@ -83,6 +89,11 @@ public class HotelReservationService {
             throw new RuntimeException("알맞은 정보가 없습니다.");
         }
         roomReservation.deleteHotelReservation();
+    }
+
+    @Transactional
+    public RoomReservationStatisticsResponse getRoomReservationStatistics(LocalDate startDate, LocalDate endDate) {
+        return roomReservationQueryDslRepository.findRoomReservationStatistics(startDate, endDate);
     }
 
 }

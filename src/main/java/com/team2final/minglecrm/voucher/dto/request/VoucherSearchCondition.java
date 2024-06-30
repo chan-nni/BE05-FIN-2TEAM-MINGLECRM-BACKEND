@@ -4,6 +4,7 @@ import com.team2final.minglecrm.voucher.domain.status.VoucherStatusType;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class VoucherSearchCondition {
@@ -36,8 +37,8 @@ public class VoucherSearchCondition {
 
     private LocalDateTime endDate;
 
-    private String customerGrade;
+    private List<String> customerGrades;
 
-    private VoucherStatusType status;
+    private List<VoucherStatusType> status;
 
 }

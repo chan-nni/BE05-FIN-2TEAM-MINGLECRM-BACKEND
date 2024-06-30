@@ -41,7 +41,7 @@ public class SecurityConfig {
 
     // 1번
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception{
+    public AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
@@ -79,7 +79,8 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authenticationProvider(jwtAuthenticationProvider)
                 .authorizeHttpRequests(requests -> {
-                    requests.requestMatchers("/api/v1/auth/signintest", "/api/v1/auth/signup", "/api/v1/auth/renew").permitAll()
+                    requests.requestMatchers("/api/v1/auth/signintest", "/api/v1/auth/signup", "/api/v1/auth/renew",
+                                    "/api/readcheck/**").permitAll()
                             .requestMatchers(PathRequest.toH2Console()).permitAll()
                             .anyRequest().authenticated();
                 });

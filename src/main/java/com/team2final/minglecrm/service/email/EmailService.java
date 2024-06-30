@@ -1,17 +1,22 @@
 package com.team2final.minglecrm.service.email;
 
+import com.team2final.minglecrm.employee.domain.Employee;
+import com.team2final.minglecrm.event.dto.request.CreateEventRequest;
+import com.team2final.minglecrm.event.dto.request.GroupEmailSendRequest;
+import com.team2final.minglecrm.event.dto.request.PersonalEmailSendRequest;
 import com.team2final.minglecrm.customer.domain.Customer;
+import com.team2final.minglecrm.event.domain.Event;
+import com.team2final.minglecrm.log.domain.EmailLog;
 import com.team2final.minglecrm.customer.domain.repository.CustomerRepository;
 import com.team2final.minglecrm.employee.domain.repository.EmployeeRepository;
-import com.team2final.minglecrm.event.domain.Event;
 import com.team2final.minglecrm.event.domain.repository.EventRepository;
-import com.team2final.minglecrm.event.dto.request.CreateEventRequest;
-import com.team2final.minglecrm.event.dto.request.PersonalEmailSendRequest;
-import com.team2final.minglecrm.event.service.EventService;
-import com.team2final.minglecrm.log.domain.EmailLog;
 import com.team2final.minglecrm.log.domain.repository.EmailLogRepository;
+import com.team2final.minglecrm.event.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -54,5 +59,42 @@ public class EmailService {
                 .build();
 
         emailLogRepository.save(emailLog);
+    }
+
+
+    @Transactional
+    public void sendGroupEmail(GroupEmailSendRequest request, String employeeEmail) throws Exception {
+
+        // 이벤트 생성
+        CreateEventRequest createEventRequest = CreateEventRequest.builder()
+                .title(request.getTitle())
+                .content(request.getContent())
+                .employeeEmail(employeeEmail)
+                .sendCount(0L)
+                .build();
+
+        Long eventId = eventService.createEvent(createEventRequest);
+
+        Event event = eventRepository.findById(eventId).orElseThrow( () -> new Exception("없는 이벤트입니다."));
+
+        List<String> customerEmails = request.getToEmails();
+
+        String content = request.getContent();
+
+        for(String customerEmail : customerEmails) {
+            Customer customer = customerRepository.findByEmail(customerEmail).orElseThrow( () ->
+                    new IllegalArgumentException("없는 고객입니다."));
+
+            String newContent = content + " <img src=http://localhost:8080/api/readcheck/" + eventId.toString() + "/" + customerEmail + "\">";
+            emailSendService.sendMail(customerEmail, request.getTitle(), content);
+
+            EmailLog emailLog = EmailLog.builder()
+                    .event(event)
+                    .customer(customer)
+                    .build();
+
+            event.increaseSendCount();
+            emailLogRepository.save(emailLog);
+        }
     }
 }

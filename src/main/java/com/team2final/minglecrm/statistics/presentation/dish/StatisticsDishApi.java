@@ -1,5 +1,7 @@
 package com.team2final.minglecrm.statistics.presentation.dish;
 
+import com.team2final.minglecrm.statistics.domain.PurchaseDish;
+import com.team2final.minglecrm.statistics.dto.response.dish.DishAmountResponse;
 import com.team2final.minglecrm.statistics.dto.response.dish.StatisticsDishResponse;
 import com.team2final.minglecrm.statistics.service.dish.StatisticsDishService;
 import lombok.RequiredArgsConstructor;
@@ -33,16 +35,13 @@ public class StatisticsDishApi {
 
     // 직원은 기간을 설정하여 판매된 상품(dish) 수를 조회할 수 있다.
     @GetMapping("/purchase-dish-date")
-    public ResponseEntity<List<StatisticsDishResponse>> getPurchaseDishByDateRange(@RequestParam("start") String startDate,
-                                                                   @RequestParam("end") String endDate,
-                                                                   Pageable pageable) {
+    public ResponseEntity<List<StatisticsDishResponse>> getPurchaseDishByDateRange(@RequestParam(value = "start", required = false) LocalDate startDate,
+                                                                                   @RequestParam(value = "end", required = false) LocalDate endDate,
+                                                                                   Pageable pageable) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate start = LocalDate.parse(startDate, formatter);
-            LocalDate end = LocalDate.parse(endDate, formatter);
 
-            List<StatisticsDishResponse> result = statisticsDishService.getPurchaseDishByDateRange(start, end, pageable);
-            if (end.isBefore(start)) {
+            List<StatisticsDishResponse> result = statisticsDishService.getPurchaseDishByDateRange(startDate, endDate, pageable);
+            if (endDate.isBefore(startDate)) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "종료 날짜가 시작 날짜 보다 빠릅니다.");
             }
             return ResponseEntity.ok(result);
@@ -52,5 +51,22 @@ public class StatisticsDishApi {
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "판매 상품을 조회할 수  없습니다.", e);
         }
+    }
+
+    @GetMapping("/total-price-yesterday")
+    public ResponseEntity<DishAmountResponse> getTotalPriceYesterday() {
+        Long totalPrice = statisticsDishService.calculateTotalPriceYesterday();
+        DishAmountResponse result = new DishAmountResponse(totalPrice);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/total-amount")
+    public ResponseEntity<DishAmountResponse> getTotalAmount(@RequestParam("start") LocalDate startDate,
+                                                             @RequestParam("end") LocalDate endDate) {
+
+        Long totalAmount = statisticsDishService.calculateTotalAmount(startDate, endDate);
+        DishAmountResponse result = new DishAmountResponse(totalAmount);
+        return ResponseEntity.ok(result);
+
     }
 }

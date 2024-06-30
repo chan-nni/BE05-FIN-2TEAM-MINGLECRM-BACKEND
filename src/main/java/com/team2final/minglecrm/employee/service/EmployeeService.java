@@ -49,6 +49,7 @@ public class EmployeeService {
                 .authority(signUpRequest.getAuthority())
                 .build();
 
+        employee.createEmployee(signUpRequest);
         employeeRepository.save(employee);
         return SignUpResponse.of(employee);
     }

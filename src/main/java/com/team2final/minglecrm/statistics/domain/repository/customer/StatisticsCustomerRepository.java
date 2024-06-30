@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface StatisticsCustomerRepository extends JpaRepository<Customer, Long> {
@@ -19,6 +20,11 @@ public interface StatisticsCustomerRepository extends JpaRepository<Customer, Lo
     // 직원은 기간을 설정하여 방문 고객을 조회할 수 있다.
     @Query("SELECT c FROM Customer c JOIN FETCH c.roomReservations r WHERE r.startDate <= :endDate AND r.endDate >= :startDate")
     Page<Customer> findCustomersByReservationDateBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
+
+    // 직원은 기간을 설정하여 방문 고객을 조회할 수 있다. - 페이징처리 x
+    @Query("SELECT c FROM Customer c JOIN FETCH c.roomReservations r WHERE r.startDate <= :endDate AND r.endDate >= :startDate")
+    List<Customer> findCustomersByReservationDateBetween(LocalDate startDate, LocalDate endDate);
+
 
     // 직원은 특정 방문 횟수 이상인 고객을 조회할 수 있다.
     @Query("SELECT c FROM Customer c WHERE c.visitCnt > :visitCnt")

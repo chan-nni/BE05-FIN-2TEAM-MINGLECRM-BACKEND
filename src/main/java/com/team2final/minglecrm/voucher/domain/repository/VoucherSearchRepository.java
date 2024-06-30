@@ -50,6 +50,10 @@ public class VoucherSearchRepository {
                         voucherHistory.voucher.endDate
                 ))
                 .from(voucherHistory)
+                .leftJoin(voucherHistory.voucher)
+                .leftJoin(voucherHistory.employeeStaff)
+                .leftJoin(voucherHistory.employeeManager)
+                .leftJoin(voucherHistory.customer)
                 .where(
                         requestDateEq(condition.getRequestDate()),
                         createdReasonContains(condition.getCreatedReason()),
@@ -64,13 +68,14 @@ public class VoucherSearchRepository {
                         rejectedReasonContains(condition.getRejectedReason()),
                         voucherCodeContains(condition.getVoucherCode()),
                         dateBetween(condition.getStartDate(), condition.getEndDate()),
-                        gradeEq(condition.getCustomerGrade()),
-                        statusEq(condition.getStatus()),
+                        gradeIn(condition.getCustomerGrades()),
+                        statusIn(condition.getStatus()),
                         startDateEq(condition.getStartDate()),
                         endDateEq(condition.getEndDate())
                 )
                 .fetch();
     }
+
     public BooleanExpression startDateEq(LocalDateTime startDate) {
         return startDate != null ? QVoucherHistory.voucherHistory.voucher.startDate.eq(startDate) : null;
     }
@@ -79,12 +84,12 @@ public class VoucherSearchRepository {
         return endDate != null ? QVoucherHistory.voucherHistory.voucher.endDate.eq(endDate) : null;
     }
 
-    public BooleanExpression statusEq(VoucherStatusType status) {
-        return status != null ? QVoucherHistory.voucherHistory.status.eq(status) : null;
+    public BooleanExpression statusIn(List<VoucherStatusType> statuses) {
+        return statuses != null && !statuses.isEmpty() ? QVoucherHistory.voucherHistory.status.in(statuses) : null;
     }
 
-    public BooleanExpression gradeEq(String grade) {
-        return grade != null ? QVoucherHistory.voucherHistory.customer.grade.eq(grade) : null;
+    public BooleanExpression gradeIn(List<String> grades) {
+        return grades != null && !grades.isEmpty() ? QVoucherHistory.voucherHistory.customer.grade.in(grades) : null;
     }
 
     private BooleanExpression requestDateEq(LocalDateTime requestDate) {

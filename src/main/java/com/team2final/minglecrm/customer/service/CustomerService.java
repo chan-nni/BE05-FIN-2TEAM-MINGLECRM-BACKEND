@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final EmployeeRepository employeeRepository;
     private final ViewLogService viewLogService;
     private final CustomerSearchRepository customerSearchRepository;
 
@@ -37,6 +36,7 @@ public class CustomerService {
                 new CustomerResponse(
                         customer.getId(),
                         customer.getName(),
+                        customer.getEmail(),
                         customer.getPhone(),
                         customer.getEmployee().getName(),
                         customer.getGrade(),

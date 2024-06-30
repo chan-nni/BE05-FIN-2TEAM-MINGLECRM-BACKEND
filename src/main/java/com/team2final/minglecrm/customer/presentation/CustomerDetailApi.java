@@ -18,7 +18,7 @@ public class CustomerDetailApi {
 
     // 고객 단건 조회
     @GetMapping()
-    @PreAuthorize("hasAnyRole('STAFF', 'MANAGER','MARKETER')")
+    @PreAuthorize("hasAnyRole('CONSULTANT', 'MANAGER','MARKETER')")
     public ResponseEntity<CustomerDetailResponse> customerDetail(@PathVariable Long customerId) {
         CustomerDetailResponse customerResponse = customerService.findById(customerId);
         return ResponseEntity.ok(customerResponse);
@@ -26,7 +26,7 @@ public class CustomerDetailApi {
 
     // 고객 정보 수정
     @PatchMapping()
-    @PreAuthorize("hasAnyRole('STAFF', 'MANAGER','MARKETER')")
+    @PreAuthorize("hasAnyRole('CONSULTANT', 'MANAGER','MARKETER')")
     public void updateCustomer(@PathVariable Long customerId,
                                @RequestBody CustomerUpdateRequest customerUpdateRequest) {
         customerService.updateCustomer(customerId, customerUpdateRequest);
@@ -34,14 +34,14 @@ public class CustomerDetailApi {
 
     // 고객 삭제
     @DeleteMapping()
-    @PreAuthorize("hasAnyRole('STAFF', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('CONSULTANT', 'MANAGER','MARKETER')")
     public void deleteCustomer(@PathVariable Long customerId) {
         customerService.deleteCustomer(customerId);
     }
 
     // 고객 메모
     @PutMapping("/memo")
-    @PreAuthorize("hasAnyRole('STAFF', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('CONSULTANT', 'MANAGER','MARKETER')")
     public void createAndUpdateMemo(@PathVariable Long customerId, @RequestBody CustomerMemoCreateAndUpdateRequest memoCreateAndUpdateRequest) {
         customerService.makeMemo(customerId, memoCreateAndUpdateRequest);
     }
