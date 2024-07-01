@@ -125,6 +125,8 @@ public class InquiryService {
         Inquiry inquiry = inquiryRepository.findById(request.getInquiryId())
                 .orElseThrow(() -> new IllegalArgumentException("문의를 찾을 수 없습니다."));
 
+        inquiry.changeIsReply();
+
         InquiryReply inquiryReply = InquiryReply.builder()
                 .inquiry(inquiry)
                 .employee(employee)

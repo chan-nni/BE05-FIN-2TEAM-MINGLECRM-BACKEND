@@ -49,4 +49,8 @@ public class Inquiry {
         this.type = type;
     }
 
+    public void changeIsReply() {
+        this.isReply = true;
+    }
+
 }
