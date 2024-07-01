@@ -55,7 +55,7 @@ public class LoginApi {
         cookie.setMaxAge((int) (tokenResponse.getRtkExpiration().getTime() - System.currentTimeMillis()) / 1000);
 
         // Explicitly set SameSite attribute
-//        cookie.setAttribute("SameSite", "None");
+        cookie.setAttribute("SameSite", "None");
 
         response.addCookie(cookie);
         System.out.println("debug >>> createRefreshTokenCookie , " + cookie);
