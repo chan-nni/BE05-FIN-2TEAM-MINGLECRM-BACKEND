@@ -48,7 +48,7 @@ public class LoginApi {
 
     private Cookie createRefreshTokenCookie(TokenResponse tokenResponse, HttpServletResponse response) {
         Cookie cookie = new Cookie("rtk", tokenResponse.getRtk());
-        cookie.setDomain(".mingle-crm.com");
+//        cookie.setDomain(".mingle-crm.com");
         cookie.setHttpOnly(true);
         cookie.setSecure(true); // HTTPS 사용 시
         cookie.setPath("/");
@@ -57,7 +57,9 @@ public class LoginApi {
         // Explicitly set SameSite attribute
         cookie.setAttribute("SameSite", "None");
 
-        response.addCookie(cookie);
+        response.addHeader("Set-Cookie", String.format("%s=%s; Path=%s; Max-Age=%d;",
+                cookie.getName(), cookie.getValue(), cookie.getPath(), cookie.getMaxAge()));
+
         System.out.println("debug >>> createRefreshTokenCookie , " + cookie);
         return cookie;
     }
@@ -155,7 +157,7 @@ public class LoginApi {
             Cookie cookie = createRefreshTokenCookie(tokenResponse, response);
             System.out.println("debug >>>>>>>>>>>> refresh cookie  , "+ cookie);
 
-            response.addCookie(cookie);
+//            response.addCookie(cookie);
 
             return new ResultResponse<>(HttpStatus.OK.value(), "success", AccessTokenResponse.builder()
                     .atk(tokenResponse.getAtk())
