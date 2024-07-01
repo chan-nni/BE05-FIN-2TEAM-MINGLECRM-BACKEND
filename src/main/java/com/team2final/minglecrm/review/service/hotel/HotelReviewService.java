@@ -58,8 +58,8 @@ public class HotelReviewService {
                 .build();
     }
 
-    public HotelReviewMetaDataResponse getHotelReviewMetaData() {
-        long rowsNumber = hotelReviewRepository.count();
+    public HotelReviewMetaDataResponse getHotelReviewMetaData(HotelReviewConditionSearchRequest condition) {
+        long rowsNumber = hotelReviewRepository.countByExpression(condition);
         return HotelReviewMetaDataResponse.builder()
                         .rowsNumber(rowsNumber)
                         .pagesNumber((long) Math.ceil((double) rowsNumber /ROWS_PER_PAGE))

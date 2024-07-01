@@ -26,8 +26,8 @@ public class DiningReviewApi {
     }
 
     @GetMapping("/api/dining/review/meta")
-    public ResultResponse<DiningReviewMetaDataResponse> getDiningReviewMetaData() {
-        DiningReviewMetaDataResponse response = diningReviewService.getDiningReviewMetaData();
+    public ResultResponse<DiningReviewMetaDataResponse> getDiningReviewMetaData(@ModelAttribute DiningReviewConditionSearchRequest condition) {
+        DiningReviewMetaDataResponse response = diningReviewService.getDiningReviewMetaData(condition);
         return new ResultResponse<>(HttpStatus.OK.value(), "success", response);
     }
 

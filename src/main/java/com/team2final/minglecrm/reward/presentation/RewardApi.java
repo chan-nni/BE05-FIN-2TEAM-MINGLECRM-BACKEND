@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,5 +41,11 @@ public class RewardApi {
         List<RewardHistoryResponse> rewardHistories = rewardService.getAllRewardHistories();
         return ResponseEntity.status(HttpStatus.OK).body(new ResultResponse<>(HttpStatusCode.valueOf(HttpStatus.OK.value()).value(), "전체 리워드 히스토리 목록 조회 성공", rewardHistories));
     }
+
+//    @PostMapping()
+//    public ResponseEntity<ResultResponse<List<RewardHistoryResponse>>> giveRewardHistories() {
+//        List<RewardHistoryResponse> rewardHistories = rewardService.getAllRewardHistories();
+//        return ResponseEntity.status(HttpStatus.OK).body(new ResultResponse<>(HttpStatusCode.valueOf(HttpStatus.OK.value()).value(), "전체 리워드 히스토리 목록 조회 성공", rewardHistories));
+//    }
 
 }

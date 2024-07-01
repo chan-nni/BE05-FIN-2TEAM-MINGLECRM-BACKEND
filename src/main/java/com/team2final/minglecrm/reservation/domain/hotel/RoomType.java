@@ -14,7 +14,6 @@ public enum RoomType {
     PLAZA_SUITE,
     PRESIDENTIAL_SUITE,
     ROYAL_SUITE,
-
 }
 
 

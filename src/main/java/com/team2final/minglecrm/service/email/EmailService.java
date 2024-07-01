@@ -47,7 +47,8 @@ public class EmailService {
 
         // 이메일 보내기
         String content = request.getContent();
-        content = "<img src=http://localhost:8080/api/readcheck/" + eventId.toString() + "/" + request.getToEmail() + "\" " + "onerror=this.style.display='none';>";
+        String imageTag = "<img src=\"http://localhost:8080/api/readcheck/" + eventId.toString() + "/" + request.getToEmail() + "\" " + "onerror=this.style.display='none';>";
+        content += imageTag; // 기존 content에 이미지 태그를 추가
         emailSendService.sendMail(request.getToEmail(), request.getTitle(), content);
 
         // 이메일 로그 생성

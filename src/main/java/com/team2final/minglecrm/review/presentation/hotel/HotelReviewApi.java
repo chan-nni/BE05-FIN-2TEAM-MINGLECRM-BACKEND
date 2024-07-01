@@ -32,8 +32,8 @@ public class HotelReviewApi {
     }
 
     @GetMapping("/api/hotel/review/meta")
-    public ResultResponse<HotelReviewMetaDataResponse> getHotelReviewMetaData() {
-        HotelReviewMetaDataResponse response = hotelReviewService.getHotelReviewMetaData();
+    public ResultResponse<HotelReviewMetaDataResponse> getHotelReviewMetaData(@ModelAttribute HotelReviewConditionSearchRequest condition) {
+        HotelReviewMetaDataResponse response = hotelReviewService.getHotelReviewMetaData(condition);
         return new ResultResponse<>(HttpStatus.OK.value(), "success", response);
     }
 

@@ -126,4 +126,27 @@ public class HotelReviewQueryDslRepositoryImpl implements HotelReviewQueryDslRep
                 .fetch();
     }
 
+    public Long countByExpression(HotelReviewConditionSearchRequest condition) {
+        QHotelReview hotelReview = QHotelReview.hotelReview;
+        QHotelRoom hotelRoom = QHotelRoom.hotelRoom;
+        QRoomReservation roomReservation = QRoomReservation.roomReservation;
+
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if (condition.getHotel() != null) {
+            builder.and(hotelRoom.hotel.eq(condition.getHotel())); // Hotel 정보 검색
+        }
+
+        if (condition.getStartDate() != null && condition.getEndDate() != null) {
+            builder.and(hotelReview.createdTime.between(condition.getStartDate(), condition.getEndDate()));
+        }
+
+        return queryFactory
+                .select(hotelReview.count())
+                .from(hotelReview)
+                .join(hotelReview.roomReservation, roomReservation)
+                .join(roomReservation.hotelRoom, hotelRoom) // HotelRoom과 조인
+                .where(builder)
+                .fetchOne();
+    }
 }

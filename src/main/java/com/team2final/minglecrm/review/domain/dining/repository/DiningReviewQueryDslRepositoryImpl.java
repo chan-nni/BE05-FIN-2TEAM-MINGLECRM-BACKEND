@@ -17,6 +17,7 @@ import jakarta.persistence.EntityManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -111,5 +112,28 @@ public class DiningReviewQueryDslRepositoryImpl implements DiningReviewQueryDslR
                 .join(diningReview.dishReservation, dishReservation)
                 .where(builder)
                 .fetch();
+    }
+
+    @Override
+    public Long countByExpression(DiningReviewConditionSearchRequest condition) {
+        QDiningReview diningReview = QDiningReview.diningReview;
+        QDishReservation dishReservation = QDishReservation.dishReservation;
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if(condition.getRestaurant() != null) {
+            builder.and(dishReservation.restaurant.eq(condition.getRestaurant()));
+        }
+
+        if (condition.getStartDate() != null && condition.getEndDate() != null) {
+            builder.and(diningReview.createdDate.between(condition.getStartDate(), condition.getEndDate()));
+        }
+
+        return queryFactory
+                .select(diningReview.count().longValue())
+                .from(diningReview)
+                .join(diningReview.dishReservation, dishReservation)
+                .where(builder)
+                .fetchOne();
+
     }
 }

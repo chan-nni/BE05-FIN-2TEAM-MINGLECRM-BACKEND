@@ -62,8 +62,8 @@ public class DiningReviewService {
         return new ArrayList<>(page.getContent());
     }
 
-    public DiningReviewMetaDataResponse getDiningReviewMetaData() {
-        long rowsNumber = diningReviewRepository.count();
+    public DiningReviewMetaDataResponse getDiningReviewMetaData(DiningReviewConditionSearchRequest condition) {
+        long rowsNumber = diningReviewRepository.countByExpression(condition);
         return DiningReviewMetaDataResponse.builder()
                         .rowsNumber(rowsNumber)
                         .pagesNumber((long) Math.ceil((double) rowsNumber /ROWS_PER_PAGE))
