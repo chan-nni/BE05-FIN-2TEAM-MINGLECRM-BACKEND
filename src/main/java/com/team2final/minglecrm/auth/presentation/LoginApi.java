@@ -46,15 +46,20 @@ public class LoginApi {
         return null;
     }
 
-    private Cookie createRefreshTokenCookie(TokenResponse tokenResponse) {
+    private Cookie createRefreshTokenCookie(TokenResponse tokenResponse, HttpServletResponse response) {
         Cookie cookie = new Cookie("rtk", tokenResponse.getRtk());
-        cookie.setHttpOnly(true);
-//            cookie.setSecure(true); // Https 사용 시
+        cookie.setDomain(".mingle-crm.com");
+        cookie.setHttpOnly(false);
+        cookie.setSecure(true); // Https 사용 시
         cookie.setPath("/");
 
         Date now = new Date();
         int age = (int) (tokenResponse.getRtkExpiration().getTime() - now.getTime()) / 1000;
         cookie.setMaxAge(age);
+
+        response.addHeader("Set-Cookie", String.format("%s=%s; Path=%s; Max-Age=%d;",
+                cookie.getName(), cookie.getValue(), cookie.getPath(), cookie.getMaxAge()));
+
         System.out.println("debug >>> createRefreshTokenCookie , "+cookie);
         return cookie;
     }
@@ -130,7 +135,7 @@ public class LoginApi {
         }
 
         TokenResponse tokenResponse = jwtUtil.renewToken(rtk);
-        Cookie cookie = createRefreshTokenCookie(tokenResponse);
+        Cookie cookie = createRefreshTokenCookie(tokenResponse, response);
 
         response.addCookie(cookie);
 
@@ -149,7 +154,7 @@ public class LoginApi {
             TokenResponse tokenResponse = jwtUtil.createTokensBySignIn(request.getEmail());
             System.out.println("debug >>>>>>>>>>>> isValidEmailAndPassword true , "+tokenResponse);
 
-            Cookie cookie = createRefreshTokenCookie(tokenResponse);
+            Cookie cookie = createRefreshTokenCookie(tokenResponse, response);
             System.out.println("debug >>>>>>>>>>>> refresh cookie  , "+ cookie);
 
             response.addCookie(cookie);

@@ -9,7 +9,7 @@ on:
       - dev
       - feature
       - feature2
-      - feature2-inquiry
+      - feature2-deploy
 
 # 해당 코드에서 사용될 변수 설정
 env:
