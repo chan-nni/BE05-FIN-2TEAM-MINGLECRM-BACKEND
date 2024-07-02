@@ -47,7 +47,7 @@ public class EmailService {
 
         // 이메일 보내기
         String content = request.getContent();
-        String imageTag = "<img src=\"https://localhost:8080/api/readcheck/" + eventId.toString() + "/" + request.getToEmail() + "\" " + "onerror=this.style.display='none';>";
+        String imageTag = "<img src=\"https://httpstest.mingle-crm.com/api/readcheck/" + eventId.toString() + "/" + request.getToEmail() + "\" " + "onerror=this.style.display='none';>";
         emailSendService.sendMail(request.getToEmail(), request.getTitle(), content, imageTag);
 
         // 이메일 로그 생성
