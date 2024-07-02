@@ -7,6 +7,7 @@ import com.team2final.minglecrm.voucher.domain.status.VoucherStatusType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -27,4 +28,5 @@ public interface VoucherHistoryRepository extends JpaRepository<VoucherHistory, 
 
     List<VoucherHistory> findAllByEmployeeStaffAndStatusOrStatus(Employee employee, VoucherStatusType status1, VoucherStatusType status2);
 
+    List<VoucherHistory> findVoucherHistoriesByEmployeeStaffAndStatusIn(Employee employeeStaff, List<VoucherStatusType> status);
 }

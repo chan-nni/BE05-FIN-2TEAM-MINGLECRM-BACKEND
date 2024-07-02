@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -315,8 +316,12 @@ public class VoucherService {
         Employee creator = employeeRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("로그인한 사용자를 찾을 수 없습니다."));
 
+        List<VoucherStatusType> statusTypes = new ArrayList<>();
+        statusTypes.add(VoucherStatusType.SENDED);
+        statusTypes.add(VoucherStatusType.CONVERTED);
+
         List<VoucherHistory> requestedVouchers = voucherHistoryRepository
-                .findAllByEmployeeStaffAndStatusOrStatus(creator, VoucherStatusType.SENDED, VoucherStatusType.CONVERTED);
+                .findVoucherHistoriesByEmployeeStaffAndStatusIn(creator, statusTypes);
 
         return requestedVouchers.stream()
                 .map(VoucherHistoryResponse::of)
