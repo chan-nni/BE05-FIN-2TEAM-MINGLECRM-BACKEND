@@ -34,9 +34,10 @@ public class CustomerApi {
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "grade", required = false) String grade,
             @RequestParam(value = "gender", required = false) String gender,
-            @RequestParam(value = "email", required = false) String email
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "ageGroup", required = false) String ageGroup
     ) {
-        CustomerSearchCondition condition = new CustomerSearchCondition(name, grade, gender, email);
+        CustomerSearchCondition condition = new CustomerSearchCondition(name, grade, gender, email, ageGroup);
         Page<CustomerResponse> customers = customerService.search(pageable, condition);
         return ResponseEntity.ok(customers);
     }

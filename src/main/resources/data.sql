@@ -24,10 +24,12 @@ VALUES (1, '김민수', 'vsimonitto0@1688.com', 'dP6.Ie\Jkf', 'MANAGER', '2023-0
        (22, '찜케터', 'zzimni98@gmail.com', '$2a$10$n.HK7abog5/EOYBhcs6bGuDqcMKNxJ.aPA4vhIt7RRvjgYo1lern2',
         'ROLE_MARKETER', '2024-06-13', TRUE, FALSE),
        (23, '동니저', 'test@gmail.com', '$2a$10$k44kauejFFkukb7MluJxP.n8GEkj6I/yv/mU1x5Uy49WTXAE47x3q', 'ROLE_MANAGER',
-        '2024-06-13', TRUE, FALSE);
+        '2024-06-13', TRUE, FALSE),
+       (24, '강찬미', 'rkdcksal02@gmail.com', '$2a$10$P3KjOKveO5GSPrXEnBB5wepTlzjXCuT8ThgTlhkwcdN0tfup.M9gq', 'ROLE_CONSULTANT', '2024-06-13', TRUE, FALSE);
+
 
 ALTER TABLE employee
-    ALTER COLUMN id RESTART WITH 23;
+    ALTER COLUMN id RESTART WITH 25;
 
 
 INSERT INTO customer (id, name, grade, phone, email, address, employee_id, memo, gender, birth, created_date,

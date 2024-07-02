@@ -14,4 +14,6 @@ public class CustomerSearchCondition {
     private String gender;
 
     private String email;
+
+    private String ageGroup;
 }

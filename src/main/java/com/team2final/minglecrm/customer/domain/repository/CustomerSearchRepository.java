@@ -50,7 +50,8 @@ public class CustomerSearchRepository {
                         customerNameEq(condition.getCustomerName()),
                         customerGradeEq(condition.getGrade()),
                         genderEq(condition.getGender()),
-                        customerEmailEq(condition.getEmail())
+                        customerEmailEq(condition.getEmail()),
+                        ageGroupEq(condition.getAgeGroup())
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -63,11 +64,27 @@ public class CustomerSearchRepository {
                         customerNameEq(condition.getCustomerName()),
                         customerGradeEq(condition.getGrade()),
                         genderEq(condition.getGender()),
-                        customerEmailEq(condition.getEmail())
+                        customerEmailEq(condition.getEmail()),
+                        ageGroupEq(condition.getAgeGroup())
                 )
                 .fetchCount();
 
         return new PageImpl<>(results, pageable, totalCount);
+    }
+
+    private BooleanExpression ageGroupEq(String ageGroup) {
+        if (ageGroup == null) {
+            return null;
+        }
+        LocalDate now = LocalDate.now();
+        return switch (ageGroup) {
+            case "20s" -> QCustomer.customer.birth.between(now.minusYears(30), now.minusYears(20));
+            case "30s" -> QCustomer.customer.birth.between(now.minusYears(40), now.minusYears(30));
+            case "40s" -> QCustomer.customer.birth.between(now.minusYears(50), now.minusYears(40));
+            case "50s" -> QCustomer.customer.birth.between(now.minusYears(60), now.minusYears(50));
+            case "60s" -> QCustomer.customer.birth.before(now.minusYears(60));
+            default -> null;
+        };
     }
 
     public RevisitCustomerStatisticsResponse findRevisitCustomerStatistics() {

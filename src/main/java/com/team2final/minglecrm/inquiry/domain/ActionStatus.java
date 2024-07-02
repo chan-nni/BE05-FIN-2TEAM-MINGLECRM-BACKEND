@@ -25,7 +25,7 @@ public enum ActionStatus {
         System.out.println("수신된 값: " + value);
         for (ActionStatus status : ActionStatus.values()) {
             System.out.println("비교 중: " + status.value);  // 모든 값 비교 로그
-            if (status.value.equals(value)) {
+            if (status.value.equals(value) || status.name().equalsIgnoreCase(value)) {
                 System.out.println("매칭된 값: " + value);
                 return status;
             }
