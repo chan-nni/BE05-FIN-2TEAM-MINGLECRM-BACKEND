@@ -156,14 +156,24 @@ public class InquiryController {
             @RequestParam(required = false) LocalDateTime endDate,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) Boolean isReply,
-            @RequestParam(required = false) ActionStatus actionStatus,
+            @RequestParam(required = false) String actionStatus,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
         Pageable pageable = PageRequest.of(page, size);
+
+        ActionStatus actionStatusEnum = null;
+        if (actionStatus != null) {
+            try {
+                actionStatusEnum = ActionStatus.fromValue(actionStatus);
+            } catch (IllegalArgumentException e) {
+                return ResponseEntity.badRequest().body(new ResultResponse<>(HttpStatusCode.valueOf(HttpStatus.BAD_REQUEST.value()).value(), "조치 상태를 찾을 수 없음", null));
+            }
+        }
+
         Page<InquiryResponse> inquiries = inquiryService.searchInquiries(
                 keyword, customerName, customerPhone, inquiryTitle, inquiryContent,
-                startDate, endDate, type, isReply, actionStatus, pageable
+                startDate, endDate, type, isReply, actionStatusEnum, pageable
         );
         return ResponseEntity.status(HttpStatus.OK).body(new ResultResponse<>(HttpStatusCode.valueOf(HttpStatus.OK.value()).value(), "문의 전체 목록 검색 성공", inquiries));
     }
