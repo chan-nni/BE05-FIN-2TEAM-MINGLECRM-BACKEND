@@ -74,19 +74,25 @@ public class EventService {
 
     @Transactional
     public Long createEvent(CreateEventRequest request) {
+        try {
+            Employee employee = employeeRepository.findByEmail(request.getEmployeeEmail())
+                    .orElseThrow(() -> new IllegalArgumentException("없는 직원 입니다."));
 
-        Employee employee = employeeRepository.findByEmail(request.getEmployeeEmail()).orElseThrow( () -> new IllegalArgumentException("없는 직원 입니다."));
+            Event event = Event.builder()
+                    .title(request.getTitle())
+                    .content(request.getContent())
+                    .employee(employee)
+                    .sentDate(LocalDateTime.now())
+                    .sendCount(request.getSendCount())
+                    .build();
 
-        Event event = Event.builder()
-                .title(request.getTitle())
-                .content(request.getContent())
-                .employee(employee)
-                .sentDate(LocalDateTime.now())
-                .sendCount(request.getSendCount())
-                .build();
-
-        Event savedEvent = eventRepository.save(event);
-        return savedEvent.getId();
+            Event savedEvent = eventRepository.save(event);
+            return savedEvent.getId();
+        } catch (Exception e) {
+            System.err.println("Error occurred during event creation: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Transactional

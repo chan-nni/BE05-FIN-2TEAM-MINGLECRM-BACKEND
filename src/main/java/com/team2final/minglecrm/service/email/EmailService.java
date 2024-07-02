@@ -86,8 +86,8 @@ public class EmailService {
             Customer customer = customerRepository.findByEmail(customerEmail).orElseThrow( () ->
                     new IllegalArgumentException("없는 고객입니다."));
 
-            String newContent = content + " <img src=http://localhost:8080/api/readcheck/" + eventId.toString() + "/" + customerEmail + "\">";
-            emailSendService.sendMail(customerEmail, request.getTitle(), content);
+            String traceTag = " <img src=https://localhost:8080/api/readcheck/" + eventId.toString() + "/" + customerEmail + "\">";
+            emailSendService.sendMail(customerEmail, request.getTitle(), content+traceTag);
 
             EmailLog emailLog = EmailLog.builder()
                     .event(event)

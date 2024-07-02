@@ -6044,8 +6044,11 @@ VALUES (1, 5.0, 4.0, 5.0, 5.0, '맛있고 서비스도 좋았습니다. 해물�
 
 
 INSERT INTO event (id, title, content, employee_id, sent_date, send_count)
-VALUES (1, 'Event 1', 'Description for Event 1', NULL, '2024-05-13 00:00:00', 0),
-       (2, 'Event 2', 'Description for Event 2', NULL, '2024-05-14 00:00:00', 0);
+VALUES (1, 'Event 1', 'Description for Event 1', 1, '2024-05-13 00:00:00', 5),
+       (2, 'Event 2', 'Description for Event 2', 1, '2024-05-14 00:00:00', 6);
+
+ALTER TABLE event
+    ALTER COLUMN id RESTART WITH 3;
 
 
 INSERT INTO email_log (EVENT_ID, CUSTOMER_ID, IS_OPENED, OPENED_TIME)
@@ -6063,6 +6066,7 @@ VALUES (1, 1, true, '2024-05-13 2:00:00'),
 
 ALTER TABLE email_log
     ALTER COLUMN id RESTART WITH 12;
+ALTER TABLE event ALTER COLUMN content TYPE TEXT;
 
 ALTER TABLE voucher
     ALTER COLUMN id RESTART WITH 31;

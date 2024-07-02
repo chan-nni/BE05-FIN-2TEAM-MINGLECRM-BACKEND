@@ -13,6 +13,7 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -101,7 +102,7 @@ public class BatchScheduler {
             try {
                 emailSendService.sendMail(customer.getEmail(), "다가오는 생일을 축하합니다.",
                         customer.getName() + "님, " + ",\n\n다가오는 생일을 축하드리며 생일기념 바우처를 드립니다.");
-            } catch (MessagingException e) {
+            } catch (MessagingException | IOException e) {
                 e.printStackTrace();
             }
         }

@@ -1,0 +1,507 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+<head>
+    <title></title>
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        #outlook a { padding:0; }
+        body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
+        table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
+        img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
+        p { display:block;margin:13px 0; }
+    </style>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <!--[if lte mso 11]>
+    <style type="text/css">
+        .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+    </style>
+    <!--<![endif]-->
+
+
+
+    <style type="text/css">
+        @media only screen and (min-width:480px) {
+            .mj-column-per-66-66666666666666 { width:66.66666666666666% !important; max-width: 66.66666666666666%; }
+            .mj-column-per-33-33333333333333 { width:33.33333333333333% !important; max-width: 33.33333333333333%; }
+            .mj-column-per-100 { width:100% !important; max-width: 100%; }
+        }
+    </style>
+    <style media="screen and (min-width:480px)">
+        .moz-text-html .mj-column-per-66-66666666666666 { width:66.66666666666666% !important; max-width: 66.66666666666666%; }
+        .moz-text-html .mj-column-per-33-33333333333333 { width:33.33333333333333% !important; max-width: 33.33333333333333%; }
+        .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }
+    </style>
+
+
+    <style type="text/css">
+
+
+    </style>
+    <style type="text/css">
+        .hide_on_mobile { display: none !important;}
+        @media only screen and (min-width: 480px) { .hide_on_mobile { display: block !important;} }
+        .hide_section_on_mobile { display: none !important;}
+        @media only screen and (min-width: 480px) {
+            .hide_section_on_mobile {
+                display: table !important;
+            }
+
+            div.hide_section_on_mobile {
+                display: block !important;
+            }
+        }
+        .hide_on_desktop { display: block !important;}
+        @media only screen and (min-width: 480px) { .hide_on_desktop { display: none !important;} }
+        .hide_section_on_desktop {
+            display: table !important;
+            width: 100%;
+        }
+        @media only screen and (min-width: 480px) { .hide_section_on_desktop { display: none !important;} }
+
+        p, h1, h2, h3 {
+            margin: 0px;
+        }
+
+        ul, li, ol {
+            font-size: 11px;
+            font-family: Ubuntu, Helvetica, Arial;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media only screen and (max-width:480px) {
+            .mj-column-per-66 { width:100%!important; max-width:100%!important; }.mj-column-per-100 > .mj-column-per-66 { width:66.66666666666666%!important; max-width:66.66666666666666%!important; }.mj-column-per-33 { width:100%!important; max-width:100%!important; }.mj-column-per-100 > .mj-column-per-33 { width:33.33333333333333%!important; max-width:33.33333333333333%!important; }.mj-column-per-100 { width:100%!important; max-width:100%!important; }.mj-column-per-100 > .mj-column-per-100 { width:100%!important; max-width:100%!important; }
+        }
+    </style>
+
+</head>
+<body style="word-spacing:normal;background-color:#FFFFFF;">
+
+
+<div style="background-color:#FFFFFF;">
+
+
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:2px 0px 2px 0px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:middle;width:399.99999999999994px;" ><![endif]-->
+
+                    <div class="mj-column-per-66-66666666666666 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="left" style="font-size:0px;padding:0px 0px 0px 15px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:left;color:#000000;"></div>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td><td class="" style="vertical-align:middle;width:199.99999999999997px;" ><![endif]-->
+
+                    <div class="mj-column-per-33-33333333333333 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:middle;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="right" style="font-size:0px;padding:0px 15px 0px 0px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:right;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px;"><a href="*|WEBVERSION|*" style="color: #000000;">Online version of email</a></p></div>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:4px 0px 4px 0px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="left" style="font-size:0px;padding:15px 15px 15px 15px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:left;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px; text-align: center;"><span style="background-color: rgb(255, 255, 255);"><strong><span style="font-size: 25px; background-color: rgb(255, 255, 255);">MINGLE HOTEL</span></strong></span></p></div>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0.5, 0" position="0.5, 0" src="https://storage.googleapis.com/afuxova10642/easter_gold.jpg" color="#FFFFFF" type="tile" size="1,1" aspect="atleast" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]-->
+
+    <div style="background:#FFFFFF url('https://storage.googleapis.com/afuxova10642/easter_gold.jpg') center top / cover repeat;background-position:center top;background-repeat:repeat;background-size:cover;margin:0px auto;max-width:600px;">
+        <div style="line-height:0;font-size:0;">
+            <table align="center" background="https://storage.googleapis.com/afuxova10642/easter_gold.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF url('https://storage.googleapis.com/afuxova10642/easter_gold.jpg') center top / cover repeat;background-position:center top;background-repeat:repeat;background-size:cover;width:100%;">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:0px 0px 0px 0px;text-align:center;">
+                        <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                                <tbody>
+
+                                <tr>
+                                    <td style="font-size:0px;word-break:break-word;">
+
+                                        <div style="height:100px;line-height:100px;">&#8202;</div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;">
+
+                                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:center;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px;"><br><span style="color: #996600;"><span style="font-size: 48px;"><em>바우처 발급 축하드립니다!<br><span th:text="${voucher}"></span></em></span></span></p></div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="font-size:0px;word-break:break-word;">
+
+                                        <div style="height:10px;line-height:10px;">&#8202;</div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="font-size:0px;word-break:break-word;">
+
+                                        <div style="height:62px;line-height:62px;">&#8202;</div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="font-size:0px;word-break:break-word;">
+
+                                        <div style="height:100px;line-height:100px;">&#8202;</div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="font-size:0px;word-break:break-word;">
+
+                                        <div style="height:100px;line-height:100px;">&#8202;</div>
+
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <!--[if mso | IE]></td></tr></table><![endif]-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--[if mso | IE]></v:textbox></v:rect></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#C5AF62" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div style="background:#C5AF62;background-color:#C5AF62;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#C5AF62;background-color:#C5AF62;width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:9px 0px 9px 0px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:center;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px;"><span style="font-size:18px;"><span style="color:#ffffff;">Happy Easter, colorful eggs,<br>
+blooming spring and tons of sunshine!</span></span></p>
+
+                                        <p style="font-family: Ubuntu, sans-serif; font-size: 11px;"><em><span style="font-size:20px;"><span style="color:#ffffff;">Best Wishes&nbsp;Company</span></span></em></p></div>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#C5AF62" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div style="background:#C5AF62;background-color:#C5AF62;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#C5AF62;background-color:#C5AF62;width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:5px 0px 5px 0px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:10px 10px 10px 10px;word-break:break-word;">
+
+
+                                    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td><![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                        <tbody>
+
+                                        <tr>
+                                            <td style="padding:4px;vertical-align:middle;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:transparent;border-radius:3px;width:35px;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-size:0;height:35px;vertical-align:middle;width:35px;">
+                                                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/PROFILE" target="_blank" style="color: #0000EE;">
+                                                                <img height="35" src="https://s3-eu-west-1.amazonaws.com/ecomail-assets/editor/social-icos/roundedwhite/facebook.png" style="border-radius:3px;display:block;" width="35">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso | IE]></td><td><![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                        <tbody>
+
+                                        <tr>
+                                            <td style="padding:4px;vertical-align:middle;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:transparent;border-radius:3px;width:35px;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-size:0;height:35px;vertical-align:middle;width:35px;">
+                                                            <a href="https://twitter.com/intent/tweet?url=https://www.twitter.com/PROFILE" target="_blank" style="color: #0000EE;">
+                                                                <img height="35" src="https://s3-eu-west-1.amazonaws.com/ecomail-assets/editor/social-icos/roundedwhite/twitter.png" style="border-radius:3px;display:block;" width="35">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso | IE]></td><td><![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                        <tbody>
+
+                                        <tr>
+                                            <td style="padding:4px;vertical-align:middle;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:transparent;border-radius:3px;width:35px;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-size:0;height:35px;vertical-align:middle;width:35px;">
+                                                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/PROFILE&title=&summary=&source=" target="_blank" style="color: #0000EE;">
+                                                                <img height="35" src="https://s3-eu-west-1.amazonaws.com/ecomail-assets/editor/social-icos/roundedwhite/linkedin.png" style="border-radius:3px;display:block;" width="35">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso | IE]></td><td><![endif]-->
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                        <tbody>
+
+                                        <tr>
+                                            <td style="padding:4px;vertical-align:middle;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:transparent;border-radius:3px;width:35px;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-size:0;height:35px;vertical-align:middle;width:35px;">
+                                                            <a href="https://www.instagram.com/PROFILE" target="_blank" style="color: #0000EE;">
+                                                                <img height="35" src="https://s3-eu-west-1.amazonaws.com/ecomail-assets/editor/social-icos/roundedwhite/instagram.png" style="border-radius:3px;display:block;" width="35">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <!--[if mso | IE]></td></tr></table><![endif]-->
+
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#FFFFFF" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+    <div style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
+
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
+            <tbody>
+            <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px 0px 0px 0px;text-align:center;">
+                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+                    <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:center;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px;">Please enter your address and contact here</p>
+
+                                        <p style="font-family: Ubuntu, sans-serif; font-size: 11px;">Tell the recipient, why they received the email and how they found it in your mailing list</p></div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" style="font-size:0px;padding:2px 2px 2px 2px;word-break:break-word;">
+
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:center;color:#000000;"><p style="font-family: Ubuntu, sans-serif; font-size: 11px;">If you no longer want to receive emails from us,&nbsp;<span style="color:#2c3e50;">&nbsp;</span><strong><a href="*|UNSUB|*" style="color: #000000;">please unsubscribe here.</a><span style="color:#2c3e50;">.</span></strong></p></div>
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+
+
+</div>
+
+</body>
+</html>
